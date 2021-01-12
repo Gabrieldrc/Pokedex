@@ -3,60 +3,79 @@
   height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
 }
 
-.pokeball, .container_animated{
+.pokeball_container, .pokeball_animated{
   position: relative;
-  width: 226px;
-  height: 224px;
+  width: 100%;
+  height: fit-content;
+  margin-top: 50vh;
 }
 
-.container_animated {
+.pokeball_animated {
   animation-name: container_rotating;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
-}
-
-.top {
-  width: inherit;
-  height: 147px;
-  background-image: url("/images/pokeball-top.png");
-  z-index: 1;
-  position: absolute;
+  transition: margin-top 0.5s ease-in-out 1s;
+  margin-top: -50px;
 }
 
 .interior, .interior_opening {
-  height: 1px;
-  margin-top: 110px;
+  position: relative;
+  height: 0px;
   width: 100%;
-  background-color: tomato;
-  transition: height 0.3s ease-in-out;
+  background-color: black;
+}
+
+.absolute_top, .absolute_bottom {
+  position: absolute;
+  width: 100%;
 }
 
 .interior_opening {
-  animation-name: opening;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 1s;
+  transition: height 0.5s ease-in-out 1s;
+  height: 120vh;
+}
+
+.absolute_top {
+  top: -110px;
+  height: 147px;
+  z-index: 2;
+}
+
+.absolute_bottom {
+  bottom: -116px;
+  height: 116px;
+  z-index: 1;
+}
+
+.top, .bottom {
+  background-repeat: no-repeat;
+  width: 226px;
+  height: inherit;
+  margin: auto;
+}
+
+.top {
+  background-image: url("/images/pokeball-top.png");
 }
 
 .bottom {
-  width: inherit;
-  height: 116px;
   background-image: url("/images/pokeball-bottom.png");
 }
 
 .flickering_buttom, .normal_buttom {
   position: absolute;
-  top: 90px;
-  left: 94px;
+  bottom: 0;
+  left: 50%;
   height: 38px;
   width: 38px;
-  /* background-color: rgba(0, 0, 0, 0.5); */
+  margin-left: -19px;
+  margin-bottom: 19px;
   border-radius: 9999px;
-  z-index: 2;
+  z-index: 3;
+  cursor: pointer;
 }
 
 .flickering_buttom {
@@ -84,7 +103,6 @@
 
 @keyframes opening {
   100% { 
-    height: 10vh;
-    /* width: 100vw; */
+    height: 100vh;
   }
 }
