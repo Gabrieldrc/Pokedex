@@ -1,0 +1,90 @@
+.container {
+  background-color: yellow;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokeball, .container_animated{
+  position: relative;
+  width: 226px;
+  height: 224px;
+}
+
+.container_animated {
+  animation-name: container_rotating;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.top {
+  width: inherit;
+  height: 147px;
+  background-image: url("/images/pokeball-top.png");
+  z-index: 1;
+  position: absolute;
+}
+
+.interior, .interior_opening {
+  height: 1px;
+  margin-top: 110px;
+  width: 100%;
+  background-color: tomato;
+  transition: height 0.3s ease-in-out;
+}
+
+.interior_opening {
+  animation-name: opening;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+}
+
+.bottom {
+  width: inherit;
+  height: 116px;
+  background-image: url("/images/pokeball-bottom.png");
+}
+
+.flickering_buttom, .normal_buttom {
+  position: absolute;
+  top: 90px;
+  left: 94px;
+  height: 38px;
+  width: 38px;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  border-radius: 9999px;
+  z-index: 2;
+}
+
+.flickering_buttom {
+  animation-name: flicker;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.normal_buttom {
+  background-color: rgba(255, 99, 71, 0.5);
+}
+
+@keyframes flicker {
+  0% { background-color: rgba(0, 0, 0, 0); }
+  50% { background-color: rgba(255, 68, 0, 0.5); }
+  100% { background-color: rgba(0, 0, 0, 0); }
+}
+
+@keyframes container_rotating {
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes opening {
+  100% { 
+    height: 10vh;
+    /* width: 100vw; */
+  }
+}
