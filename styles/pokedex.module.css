@@ -3,7 +3,7 @@
   grid-template-columns: auto auto auto;
   height: 5vh;
   width: 100%;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .container > a {
@@ -12,7 +12,7 @@
   align-items: center;
   text-decoration: none;  
   color: rgb(17,165,167);
-  background-color: brown;
+  /* background-color: brown; */
 }
 
 .horizontal_container {
@@ -41,5 +41,6 @@
   overflow-x: hidden;
   height: auto;
   width: 100%;
+  padding-bottom: 10vh;
   /* background-color: green; */
 }

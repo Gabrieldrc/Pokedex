@@ -9,14 +9,7 @@ export default function Pokedex() {
     let pokemons = [];
     let numberString;
     for (let i = 1; i < 300; i++) {
-      if (i.toString().length == 1) {
-        numberString = '00' + i;
-      } else if (i.toString().length == 2) {
-        numberString = '0' + i;
-      } else {
-        numberString = i.toString();
-      }
-      pokemons.push(<GridPokemon number={numberString} key={numberString}/>);
+      pokemons.push(<GridPokemon number={i} key={i}/>);
     }
     return pokemons;
   }
@@ -32,7 +25,7 @@ export default function Pokedex() {
         <section id="Ability" className={pokedexStyles.content} style={{backgroundColor: "blue"}}>
           pagina1
         </section>
-        <section id="Pokedex" className={pokedexStyles.content} style={{backgroundColor: "purple"}}>
+        <section id="Pokedex" className={pokedexStyles.content} >
           <div className={pokedexStyles.vertical_container}>
             {renderAllGridPokemon()}
           </div>
