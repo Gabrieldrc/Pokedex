@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "next": "^10.0.0",
+    "pokedex-promise-v2": "^3.3.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }
