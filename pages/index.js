@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import utilStyles from '../styles/utils.module.css'
 import indexStyles from '../styles/index.module.css'
 
 export default function Home() {
