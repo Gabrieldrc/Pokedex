@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import styles from '../styles/gridPokemon.module.css';
 import { getPokemonImageDetailSrc } from '../lib/pokemon_images.sevices';
-import { getPokemon } from '../lib/pokedex.api';
 
 const pokemonLink = "/pokedex/pokemon/";
 
 export default function GridPokemon({ number }) {
-  const pokemonData = getPokemon(number);
   let numberString;
   if (number.toString().length == 1) {
     numberString = '00' + number;
@@ -17,7 +15,6 @@ export default function GridPokemon({ number }) {
   }
 
 
-  console.log(pokemonData);
   return(
     <Link href={pokemonLink + numberString}>
     <a className={styles.container}>
