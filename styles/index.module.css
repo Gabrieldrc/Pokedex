@@ -41,13 +41,13 @@
 .absolute_top {
   top: -110px;
   height: 147px;
-  z-index: 2;
+  z-index: 3;
 }
 
 .absolute_bottom {
   bottom: -116px;
   height: 116px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .top, .bottom {
@@ -74,7 +74,7 @@
   margin-left: -19px;
   margin-bottom: 19px;
   border-radius: 9999px;
-  z-index: 3;
+  z-index: 4;
   cursor: pointer;
 }
 

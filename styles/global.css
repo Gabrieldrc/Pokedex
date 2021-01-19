@@ -13,6 +13,30 @@ body {
   box-sizing: border-box;
 }
 
+/* loading component */
+#loading_page_animation {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999999;
+  color: white;
+}
+
+/* loading icon */
+#load_page_icon {
+  animation-name: loading;
+  animation-duration: 0.6s;
+  transition: all 0.2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+  20% {transform: rotate(-45deg);}
+  40% {transform: rotate(45deg);}
+  60% {transform: rotate(0deg);}
+  100% {transform: rotate(0deg);}
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

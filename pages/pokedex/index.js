@@ -1,10 +1,10 @@
-import Link from 'next/link';
+
+
 import styles from '../../styles/pokedex.module.css'
 import Layout from '../../components/layout';
 import GridPokemon from '../../components/gridPokemon';
 
 export default function Pokedex() {
-
   const renderAllGridPokemon = () => {
     let pokemons = [];
     for (let i = 1; i < 300; i++) {
