@@ -1,0 +1,122 @@
+@use '/styles/1-helpers/variables';
+
+%pokeball_container {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  margin-top: 50vh;
+}
+
+%pokeball_interior {
+  position: relative;
+  height: 0px;
+  width: 100%;
+  background-color: variables.$black;
+}
+
+%absolute {
+  position: absolute;
+  width: 100%;
+}
+
+%top_bottom {
+  background-repeat: no-repeat;
+  width: 226px;
+  height: inherit;
+  margin: auto;
+}
+
+%buttom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 38px;
+  width: 38px;
+  margin: {
+    left: -19px;
+    bottom: 19px;
+  }
+  border-radius: 9999px;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.container {
+  background-color: yellow;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  .pokeball_container {
+    @extend %pokeball_container;
+  }
+  .pokeball_animated {
+    @extend %pokeball_container;
+    animation-name: container_rotating;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    transition: margin-top 0.5s ease-in-out 1s;
+    margin-top: -50px;
+  }
+  .pokeball_container, .pokeball_animated {
+    .interior {
+      @extend %pokeball_interior;
+    } 
+    .interior_opening {
+      @extend %pokeball_interior;
+      transition: height 0.5s ease-in-out 1s;
+      height: 120vh;
+    }
+    .interior, .interior_opening {
+      .absolute_top {
+        @extend %absolute;
+        top: -110px;
+        height: 147px;
+        z-index: 3;
+        .top {
+          @extend %top_bottom;
+          background-image: url(variables.$pokeballTopSrc);
+        }
+        .flickering_buttom {
+          @extend %buttom;
+          animation-name: flicker;
+          animation-duration: 1s;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease-in-out;
+        }
+        .normal_buttom {
+          @extend %buttom;
+          background-color: rgba(255, 99, 71, 0.5);
+        }
+      }
+      .absolute_bottom {
+        @extend %absolute;
+        bottom: -116px;
+        height: 116px;
+        z-index: 2;
+        .bottom {
+          @extend %top_bottom;
+          background-image: url(variables.$pokeballBottomSrc);
+        }
+      }
+    }
+  }
+}
+
+@keyframes flicker {
+  0% { background-color: rgba(0, 0, 0, 0); }
+  50% { background-color: rgba(255, 68, 0, 0.5); }
+  100% { background-color: rgba(0, 0, 0, 0); }
+}
+
+@keyframes container_rotating {
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes opening {
+  100% { 
+    height: 100vh;
+  }
+}

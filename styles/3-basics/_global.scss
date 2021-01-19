@@ -1,0 +1,13 @@
+
+@use '../1-helpers/variables';
+html,body {
+  font-family: variables.$fontFamilyGlobal;
+  line-height: 1.6;
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import '../styles/global.css'
+import '../styles/global.scss';
+import '../styles/components/loadingpage.scss';
 import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
@@ -46,6 +47,8 @@ export default function App({ Component, pageProps }) {
           name="pokedex"
           content="Project with pokemon"
         />
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet"></link>
       </Head>
       <Component {...pageProps} />
       <div id="loading_page_animation" style={{display: "none"}}>
