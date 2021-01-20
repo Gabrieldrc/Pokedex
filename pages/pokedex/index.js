@@ -1,6 +1,4 @@
-
-
-import styles from '../../styles/pokedex.module.css'
+import style from '../../styles/pages/pokedex_index.module.scss'
 import Layout from '../../components/layout';
 import GridPokemon from '../../components/gridPokemon';
 
@@ -15,16 +13,16 @@ export default function Pokedex() {
 
   return (
     <Layout>
-      <div className={styles.container}>
+      <div className={style.container}>
         <a href="#Ability">Ability</a>
         <a href="#Pokedex">Pokedex</a>
         <a href="#Move">Move</a>
       </div>
-      <div className={styles.horizontal_container}>
-        <div className={styles.carousel}>
-          <div className={styles.slider}>
+      <div className={style.horizontal_container}>
+        <div className={style.carousel}>
+          <div className={style.slider}>
             <section id="Pokedex" >
-              <div className={styles.vertical_container}>
+              <div className={style.vertical_container}>
                 {renderAllGridPokemon()}
               </div>
             </section>

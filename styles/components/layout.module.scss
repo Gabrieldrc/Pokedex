@@ -1,0 +1,9 @@
+@use '../1-helpers/variables';
+
+.container {
+  width: 100%;
+  max-height: 100vh;
+  height: 100vh;
+  padding: 0 2%;
+  background-image: linear-gradient(to bottom, variables.$primaryColorLight, variables.$primaryColorDark);
+}
