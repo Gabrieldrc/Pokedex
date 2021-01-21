@@ -46,6 +46,7 @@
   }
 }
 .vertical_container {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;

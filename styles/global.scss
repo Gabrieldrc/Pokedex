@@ -17,9 +17,7 @@
 ::-webkit-scrollbar-thumb {
   background: variables.$secundaryColor;
   border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: variables.$detailsColor;
+  &:hover , &:active {
+    background: variables.$detailsColor;
+  }
 }

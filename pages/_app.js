@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }) {
           content="Project with pokemon"
         />
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"/>
       </Head>
       <Component {...pageProps} />
       <div id="loading_page_animation" style={{display: "none"}}>
