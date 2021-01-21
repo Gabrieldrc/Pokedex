@@ -1,34 +1,45 @@
+@use '../1-helpers/variables';
+
+%opacityHalf {
+  opacity: 0.5;
+}
+
+%images {
+  width: 100%;
+  height: 30vw; 
+}
+
+%absolute {
+  position: absolute;
+}
+
 .container {
   width: 30vw;
   height: 35vw;
-  margin: 10px auto;
+  margin: 5px auto 0px;
   position: relative;
   border-radius: 15px;
   border: 1px solid white;
   background-color: rgba(255, 255, 255, 0.15);
   padding: 5vw 1vw 1vw 1vw;
-}
+  &:active {
+    background-color: rgba(255, 255, 255, 0.3);
+    @extend %opacityHalf;
+    >.background_image {
+      @extend %opacityHalf;
+    }
 
-.container:active {
-  background-color: rgba(255, 255, 255, 0.3);
+  }
 }
-
-.container:active > .background_image {
-  opacity: 0.5;
-}
-
 .pokemon_image {
+  @extend %absolute;
+  @extend %images;
   z-index: 3;
   bottom: 0;
-  /* background-color: red; */
-}
-
-.background_image, .pokemon_image {
-  width: 100%;
-  height: 30vw;
 }
 
 .background_image {
+  @extend %images;
   background-image: url('/images/pokeball_white_bg.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -36,14 +47,11 @@
   opacity: 0.2;
 }
 
-.pokemon_image, .number {
-  position: absolute;
-}
-
 .number {
+  @extend %absolute;
   top: 0;
   left: 0;
-  background-color: rgb(235,94,66);
+  background-color: variables.$detailsColor;
   color: white;
   width: fit-content;
   padding: 1vh 2vw;

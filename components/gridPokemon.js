@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../styles/gridPokemon.module.css';
+import styles from '../styles/components/gridPokemon.module.scss';
 import { getPokemonImageDetailSrc } from '../lib/pokemon_images.sevices';
 
 const pokemonLink = "/pokedex/pokemon/";
