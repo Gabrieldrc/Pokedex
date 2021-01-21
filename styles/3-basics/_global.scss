@@ -1,0 +1,15 @@
+
+@use '../1-helpers/variables';
+@use '../1-tools/functions';
+
+html,body {
+  font-family: variables.$fontFamilyGlobal;
+  font-size: variables.$fontNormal;
+  scroll-behavior: smooth;
+  @include functions.lineHeight(variables.$fontNormal);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}

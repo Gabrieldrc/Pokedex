@@ -1,18 +1,18 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import indexStyles from '../styles/index.module.css'
+import style from '../styles/pages/index.module.scss'
 
 export default function Home() {
   const router = useRouter();
-  const [ classPokeball, setClassPokeball ] = useState(indexStyles.pokeball_container);
-  const [ classButtom, setClassButtom ] = useState(indexStyles.flickering_buttom);
-  const [ classInterior, setClassInterior ] = useState(indexStyles.interior);
+  const [ classPokeball, setClassPokeball ] = useState(style.pokeball_container);
+  const [ classButtom, setClassButtom ] = useState(style.flickering_buttom);
+  const [ classInterior, setClassInterior ] = useState(style.interior);
 
   const buttomClicked = () => {
-    setClassButtom(indexStyles.normal_buttom);
-    setClassPokeball(indexStyles.pokeball_animated);
-    setClassInterior(indexStyles.interior_opening);
+    setClassButtom(style.normal_buttom);
+    setClassPokeball(style.pokeball_animated);
+    setClassInterior(style.interior_opening);
     setTimeout(() => {
       router.push('/pokedex');
     }, 1500);
@@ -23,15 +23,15 @@ export default function Home() {
       <Head>
         <title>Pokedex</title>
       </Head>
-      <section className={indexStyles.container}>
+      <section className={style.container}>
         <div className={classPokeball}>
           <div className={classInterior}>
-            <div className={indexStyles.absolute_top}>
-              <div className={indexStyles.top}></div>
+            <div className={style.absolute_top}>
+              <div className={style.top}></div>
               <div className={classButtom} onClick={buttomClicked}></div>
             </div>
-            <div className={indexStyles.absolute_bottom}>
-              <div className={indexStyles.bottom}></div>
+            <div className={style.absolute_bottom}>
+              <div className={style.bottom}></div>
             </div>
           </div>
         </div>
