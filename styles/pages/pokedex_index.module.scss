@@ -47,7 +47,9 @@
 }
 .vertical_container {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 5px;
   flex-wrap: wrap;
   overflow-y: auto;
   overflow-x: hidden;
