@@ -1,3 +1,9 @@
+@use 'sass:list';
+
 @mixin lineHeight($fontSize) {
   line-height: $fontSize * 1.2;
+}
+
+@mixin toBottomBG($colorList) {
+  background-image: linear-gradient(to bottom, list.nth($colorList, 1), list.nth($colorList, 2));
 }

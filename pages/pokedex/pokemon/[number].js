@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { capitalize } from '../../../lib/functions'
 import { getPokemon } from '../../../lib/pokedex.api'
+import PokemonLayout from '../../../components/pokemonLayout';
 
 function PokemonNumber({ pokemonData }) {
   const router = useRouter();
@@ -10,9 +11,9 @@ function PokemonNumber({ pokemonData }) {
   }
   console.log(pokemonData)
   return(
-    <>
+    <PokemonLayout type={'fire'} name={'Charizar'}>
       {capitalize(pokemonData.name)}
-    </>
+    </PokemonLayout>
   );
 }
 

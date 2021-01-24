@@ -1,0 +1,12 @@
+@use '../1-tools/functions';
+@use '../1-helpers/variables';
+
+%container {
+  height: 100vh;
+  width: 100%;
+}
+
+.fire {
+  @extend %container;
+  @include functions.toBottomBG(variables.$fireBackground);
+}
