@@ -3,7 +3,7 @@ import styles from '../styles/components/pokemonLayout.module.scss';
 
 export default function PokemonLayout(props) {
   return (
-    <div className={styles.container}>
+    <div className={styles[props.type]}>
       <Head>
         <title>{props.name} | Pokedex</title>
       </Head>

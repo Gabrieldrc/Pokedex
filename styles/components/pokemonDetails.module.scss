@@ -1,0 +1,101 @@
+@use '../1-helpers/variables';
+
+%center {
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+.absoluteTopContainer {
+ position: absolute;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ top: 0;
+ left: 0;
+ width: 100%;
+ .buttom {
+   margin: 5px;
+   background-color: white;
+   color: black;
+   text-decoration: none;
+   padding: 0.5em 1em;
+  }
+  .number {
+   padding: 10px;
+  }
+}
+.numberBG {
+  position: absolute;
+  right: 0;
+  top: 0;  
+  background-color: variables.$detailsColor;
+  width: 5em;
+  height: 5em;
+  transform: rotate(45deg);
+  margin-top: -(5em / 2);
+  margin-right: -(5em / 2);
+}
+.img {
+  display: block;
+  width:50vw;
+  margin: 10vh auto 5px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: white;
+  min-height: 60vh;
+  width: 100%;
+  border-radius: 5px;
+  .mainName {
+    font-size: variables.$fontXLarge;
+    font-weight: 900;
+    margin: 1.5em auto 0.2em;
+    height: fit-content;
+    width: fit-content;
+    // background-color: red;
+  }
+  .types {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto;
+    height: fit-content;
+    .type {
+      background-color: blue;
+      color: white;
+      width: 50px;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      margin: 5px;
+      font-size: variables.$fontSmall;
+      border-radius: 15px;
+    }
+  }
+  .mainDetails {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .grid {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // background-color: blue;
+      .key {
+        @extend %center;              
+        font-size: variables.$fontNormal;
+        font-weight: 300;
+        // background-color: red;
+      }
+      .value {
+        @extend %center;          
+        font-size: variables.$fontXLarge;
+        font-weight: 800;
+      }
+    }
+  }
+}

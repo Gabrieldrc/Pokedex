@@ -5,6 +5,8 @@
 $fontFamilyGlobal: 'Source Sans Pro', sans-serif;
 $fontSmall: 14px;
 $fontNormal: 18px;
+$fontLarge: 24px;
+$fontXLarge: 30px;
 
 //****************
 //Images src variables
@@ -26,6 +28,8 @@ $black: rgb(0, 0, 0);
 
   // Pokemon Type Background 
 $fireBackground: #2c0000 #430a0a;
+$waterBackground: #0053ee #0091d4;
+$grassBackground: #00ee7f #00d483;
 
   // Pokemon Type Colors
 $steel: rgb(158, 183, 184);

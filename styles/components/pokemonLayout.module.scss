@@ -3,10 +3,26 @@
 
 %container {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
+  max-width: 100vw;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
 .fire {
   @extend %container;
   @include functions.toBottomBG(variables.$fireBackground);
+}
+
+.water {
+  @extend %container;
+  @include functions.toBottomBG(variables.$waterBackground);
+}
+
+.grass {
+  @extend %container;
+  @include functions.toBottomBG(variables.$grassBackground);
 }
