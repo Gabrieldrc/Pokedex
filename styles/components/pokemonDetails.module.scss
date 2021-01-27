@@ -6,24 +6,42 @@
   margin: 0 auto;
 }
 
-.absoluteTopContainer {
- position: absolute;
- display: flex;
- flex-direction: row;
- justify-content: space-between;
- top: 0;
- left: 0;
- width: 100%;
- .buttom {
-   margin: 5px;
-   background-color: white;
-   color: black;
-   text-decoration: none;
-   padding: 0.5em 1em;
+%centerFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttom {
+  @extend %centerFlex;
+  $base: 10vw;
+  position: fixed;
+  bottom: 2rem;
+  left: 50vw - (10vw /2);
+  width: $base + 5;
+  height: $base + 5;
+  background-color: rgb(148,235,190, 0.2);
+  color: black;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: variables.$fontLarge;
+  border-radius: variables.$circleBorder;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  .innerCircle {
+    @extend %centerFlex;
+    width: $base;
+    height: $base;
+    border-radius: inherit;
+    background-color: rgb(148,235,190, 0.5);
+    border: 2px solid variables.$secundaryColor;
+    // opacity: 0.5;
   }
-  .number {
-   padding: 10px;
-  }
+}
+.number {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
 }
 .numberBG {
   position: absolute;
@@ -36,19 +54,24 @@
   margin-top: -(5em / 2);
   margin-right: -(5em / 2);
 }
+$imgHeight: 25vh;
 .img {
   display: block;
-  width:50vw;
-  margin: 10vh auto 5px;
+  height: $imgHeight;
+  width: auto;
+  margin: 0vh auto;
+  z-index: 2;
+  // background-color: blue;
 }
 .container {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: -($imgHeight / 8) auto 0;
   background-color: white;
   min-height: 60vh;
   width: 100%;
   border-radius: 5px;
+  z-index: 1;
   .mainName {
     font-size: variables.$fontXLarge;
     font-weight: 900;
@@ -77,9 +100,10 @@
   }
   .mainDetails {
     margin: 2rem 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    // flex-direction: row;
+    // justify-content: space-around;
     .grid {
       display: flex;
       flex-direction: column;
@@ -95,6 +119,10 @@
         @extend %center;          
         font-size: variables.$fontXLarge;
         font-weight: 800;
+      }
+      .unit {
+        font-size: variables.$fontNormal;
+        font-weight: 300;
       }
     }
   }

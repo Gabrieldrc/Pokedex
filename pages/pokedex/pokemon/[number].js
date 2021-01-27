@@ -25,7 +25,13 @@ export async function getStaticProps({ params }) {
   const pokemonData = await getPokemon(parseInt(number));
   return {
     props: { 
-      pokemonData,
+      pokemonData: {
+        name: pokemonData.name,
+        height: pokemonData.height,
+        weight: pokemonData.weight,
+        types: pokemonData.types,
+        imgUrl: pokemonData.sprites.other["official-artwork"].front_default,
+      },
     }
   };
 }

@@ -11,21 +11,21 @@ export default function PokemonDetails({number, pokemonData}) {
   console.log(number);
   return(
     <PokemonLayout type={pokemonData.types[0].type.name} name={pokemonName}>
-      <div className={style.absoluteTopContainer}>
-        <Link href="/pokedex">
-          <a className={style.buttom}>Pokedex</a>
-        </Link>
-        <div className={style.number}>{number}</div>
-      </div>
+      <Link href="/pokedex">
+        <a className={style.buttom}>
+          <div className={style.innerCircle}>x</div>
+        </a>
+      </Link>
+      <div className={style.number}>{number}</div>
       {/* <div className={style.numberBG}></div> */}
-      <img className={style.img} src={getPokemonImageFullSrc(number)} alt={number}/>
+      <img className={style.img} src={pokemonData.imgUrl} alt={number}/>
       <div className={style.container}>
         <div className={style.mainName}>{pokemonName}</div>
         <div className={style.types}>
           {
             pokemonData.types.map(function (index) {
               const type = index.type.name;
-              return <div className={style.type}>{type}</div>;
+              return <div key={type} className={style.type}>{type}</div>;
             })
           }
         </div>
@@ -40,7 +40,7 @@ export default function PokemonDetails({number, pokemonData}) {
           </div>
           <div className={style.grid}>
             <div className={style.value}>
-              {pokemonData.height}
+              {pokemonData.height / 10} <span className={style.unit}>m</span>
             </div>
             <div className={style.key}>
               Height
@@ -48,7 +48,7 @@ export default function PokemonDetails({number, pokemonData}) {
           </div>
           <div className={style.grid}>
             <div className={style.value}>
-              {pokemonData.weight}
+              {pokemonData.weight / 10} <span className={style.unit}>kg</span>
             </div>
             <div className={style.key}>
               Weight
