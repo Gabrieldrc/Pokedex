@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PokemonLayout from './pokemonLayout';
 import style from '../styles/components/pokemonDetails.module.scss';
+import { getPokemonEvolutionChainId } from '../lib/pokedex.api';
 
 import { getPokemonImageFullSrc } from '../lib/pokemon_images.sevices';
 import { capitalize } from '../lib/functions';
@@ -9,6 +10,7 @@ export default function PokemonDetails({number, pokemonData}) {
   const pokemonName = capitalize(pokemonData.name);
   console.log(pokemonData);
   console.log(number);
+  getPokemonEvolutionChainId(8)
   return(
     <PokemonLayout type={pokemonData.types[0].type.name} name={pokemonName}>
       <Link href="/pokedex">
@@ -18,7 +20,7 @@ export default function PokemonDetails({number, pokemonData}) {
       </Link>
       <div className={style.number}>{number}</div>
       {/* <div className={style.numberBG}></div> */}
-      <img className={style.img} src={pokemonData.imgUrl} alt={number}/>
+      <img className={style.img} src={getPokemonImageFullSrc(number)} alt={number}/>
       <div className={style.container}>
         <div className={style.mainName}>{pokemonName}</div>
         <div className={style.types}>

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { getPokemon } from '../../../lib/pokedex.api';
+import { getPokemon, getEvolutionChainById, getPokemonEvolutionChainId, getPokemonSpeciesByName } from '../../../lib/pokedex.api';
 import Layout from '../../../components/layout';
 
 import PokemonDetails from '../../../components/pokemonDetails';
@@ -23,14 +23,18 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { number } = params;
   const pokemonData = await getPokemon(parseInt(number));
+  const id = await getPokemonEvolutionChainId(parseInt(number));
+  const evolutionChain = await getEvolutionChainById(id);
   return {
     props: { 
       pokemonData: {
-        name: pokemonData.name,
         height: pokemonData.height,
-        weight: pokemonData.weight,
+        id: pokemonData.id,
+        name: pokemonData.name,
+        imgUrl: pokemonData.sprites.other['official-artwork'].front_default,
         types: pokemonData.types,
-        imgUrl: pokemonData.sprites.other["official-artwork"].front_default,
+        weight: pokemonData.weight,
+        evolution_chain: evolutionChain,
       },
     }
   };
