@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
 import PokemonLayout from './pokemonLayout';
 import style from '../styles/components/pokemonDetails.module.scss';
-import { getPokemon } from '../lib/pokedex.api';
 import { capitalize } from '../lib/functions';
 
 export default function PokemonDetails({number, pokemonData}) {
@@ -57,7 +55,6 @@ export default function PokemonDetails({number, pokemonData}) {
         <div>
           <div>Evolution</div>
           {pokemonData.evolution_chain.map(data => {
-            console.log(data.imgUrl)
             return(
               <div key={`chain_${data.id}`}>
                 <img src={data.imgUrl} alt={data.name}/>

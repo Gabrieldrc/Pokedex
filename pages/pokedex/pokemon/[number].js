@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router';
-import { getPokemon,
-  getEvolutionChainById,
-  getPokemonEvolutionChainId,
-  getPokemonSpeciesByName,
-  addingImgUrl,
+import { 
+  getPokemonAndSpecies,
+  getResource,
+  cleanEvolutionData,
 } from '../../../lib/pokedex.api';
 import Layout from '../../../components/layout';
 
@@ -27,9 +26,9 @@ export async function getStaticPaths() {
 // This also gets called at build time
 export async function getStaticProps({ params }) {
   const { number } = params;
-  const pokemonData = await getPokemon(parseInt(number));
-  const id = await getPokemonEvolutionChainId(parseInt(number));
-  const evolutionChain = await getEvolutionChainById(id);
+  const [ pokemonData, species ] = await getPokemonAndSpecies(parseInt(number));
+  const [ evolutionChainRaw ] = await getResource([species.evolution_chain.url]);
+  const evolutionChain = await cleanEvolutionData(evolutionChainRaw);
   return {
     props: { 
       pokemonData: {
