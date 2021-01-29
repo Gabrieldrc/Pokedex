@@ -1,5 +1,10 @@
 import { useRouter } from 'next/router';
-import { getPokemon, getEvolutionChainById, getPokemonEvolutionChainId, getPokemonSpeciesByName } from '../../../lib/pokedex.api';
+import { getPokemon,
+  getEvolutionChainById,
+  getPokemonEvolutionChainId,
+  getPokemonSpeciesByName,
+  addingImgUrl,
+} from '../../../lib/pokedex.api';
 import Layout from '../../../components/layout';
 
 import PokemonDetails from '../../../components/pokemonDetails';

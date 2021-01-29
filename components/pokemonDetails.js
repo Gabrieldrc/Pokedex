@@ -1,16 +1,13 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 import PokemonLayout from './pokemonLayout';
 import style from '../styles/components/pokemonDetails.module.scss';
-import { getPokemonEvolutionChainId } from '../lib/pokedex.api';
-
-import { getPokemonImageFullSrc } from '../lib/pokemon_images.sevices';
+import { getPokemon } from '../lib/pokedex.api';
 import { capitalize } from '../lib/functions';
 
 export default function PokemonDetails({number, pokemonData}) {
   const pokemonName = capitalize(pokemonData.name);
   console.log(pokemonData);
-  console.log(number);
-  getPokemonEvolutionChainId(8)
   return(
     <PokemonLayout type={pokemonData.types[0].type.name} name={pokemonName}>
       <Link href="/pokedex">
@@ -20,7 +17,7 @@ export default function PokemonDetails({number, pokemonData}) {
       </Link>
       <div className={style.number}>{number}</div>
       {/* <div className={style.numberBG}></div> */}
-      <img className={style.img} src={getPokemonImageFullSrc(number)} alt={number}/>
+      <img className={style.img} src={pokemonData.imgUrl} alt={number}/>
       <div className={style.container}>
         <div className={style.mainName}>{pokemonName}</div>
         <div className={style.types}>
@@ -56,6 +53,18 @@ export default function PokemonDetails({number, pokemonData}) {
               Weight
             </div>
           </div>
+        </div>
+        <div>
+          <div>Evolution</div>
+          {pokemonData.evolution_chain.map(data => {
+            console.log(data.imgUrl)
+            return(
+              <div key={`chain_${data.id}`}>
+                <img src={data.imgUrl} alt={data.name}/>
+                <h2>{data.name}</h2>
+              </div>
+            );
+          })}
         </div>
       </div>
     </PokemonLayout>
