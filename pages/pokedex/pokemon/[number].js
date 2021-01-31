@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { 
   getPokemonAndSpecies,
   getResource,
-  cleanEvolutionData,
 } from '../../../lib/pokedex.api';
 import Layout from '../../../components/layout';
 
@@ -28,7 +27,6 @@ export async function getStaticProps({ params }) {
   const { number } = params;
   const [ pokemonData, species ] = await getPokemonAndSpecies(parseInt(number));
   const [ evolutionChainRaw ] = await getResource([species.evolution_chain.url]);
-  const evolutionChain = await cleanEvolutionData(evolutionChainRaw);
   return {
     props: { 
       pokemonData: {
@@ -38,7 +36,7 @@ export async function getStaticProps({ params }) {
         imgUrl: pokemonData.sprites.other['official-artwork'].front_default,
         types: pokemonData.types,
         weight: pokemonData.weight,
-        evolution_chain: evolutionChain,
+        evolution_chain_raw: evolutionChainRaw,
       },
     }
   };
