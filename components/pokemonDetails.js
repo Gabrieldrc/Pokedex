@@ -2,28 +2,10 @@ import Link from 'next/link';
 import PokemonLayout from './pokemonLayout';
 import style from '../styles/components/pokemonDetails.module.scss';
 import { capitalize } from '../lib/functions';
-import { cleanEvolutionData } from '../lib/pokedex.api';
-import { useEffect, useState } from 'react';
 import EvolutionChain from './evolutionChain';
 
 export default function PokemonDetails({number, pokemonData}) {
   const pokemonName = capitalize(pokemonData.name);
-  const [ loadingState, setLoadingState ] = useState(true);
-  const [ evolutionChainData, setEvolutionChainData ] = useState({});
-
-  useEffect(() => {
-    async function fetchPokemonEvolutionChain () {
-      const response = await cleanEvolutionData(pokemonData.evolution_chain_raw);
-      setEvolutionChainData(response);
-      setLoadingState(false);
-    }
-    fetchPokemonEvolutionChain();
-  },[])
-
-  function rederEvolution(data) {
-    console.log(data);
-    return <EvolutionChain data={data}/>;
-  }
   return(
     <PokemonLayout type={pokemonData.types[0].type.name} name={pokemonName}>
       <Link href="/pokedex">
@@ -70,15 +52,7 @@ export default function PokemonDetails({number, pokemonData}) {
             </div>
           </div>
         </div>
-        <div>
-          <div>Evolution</div>
-          {
-            loadingState ?
-             "loading..." 
-            : 
-            rederEvolution(evolutionChainData)
-          }
-        </div>
+        <EvolutionChain data={pokemonData.evolution_chain}/>
       </div>
     </PokemonLayout>
   )

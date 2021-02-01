@@ -1,52 +1,61 @@
+import { useEffect, useState } from 'react';
+import { basicPokemonData } from '../lib/pokedex.api';
+
 import style from '../styles/components/evolutionChain.module.scss';
 
 export default function EvolutionChain({ data }) {
-  console.log(data);
-  const allChains = [];
-  // function buildTheChain(dataObject) {
-  console.log(data.evolves_to.length);
-  if (data.evolves_to.length === 0) {
-    allChains.push([pokemonComponent(data)]);
-  } else {
-    data.evolves_to.forEach(pokemon2 => {
-      if (pokemon2.evolves_to.length === 0 ) {
-        allChains.push([
-          pokemonComponent(data),
-          pokemonComponent(pokemon2)
-        ]);
-      } else {
-        pokemon2.evolves_to.forEach(pokemon3 => {
-            allChains.push([
-              pokemonComponent(data),
-              pokemonComponent(pokemon2),
-              pokemonComponent(pokemon3)
-            ]);
+  const [ pokemonsData, setPokemonsData ] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      let dataList = [];
+      const enterTheListAndDoTheSame = (list) => {
+        list.forEach(async (element) => {
+          if (typeof element === 'string') {
+            dataList.push(await basicPokemonData(element));
+          } else if (typeof element === "object") {
+            enterTheListAndDoTheSame(element);
+          }
         });
-      }
+      };
+      await enterTheListAndDoTheSame(data);
+      setPokemonsData(dataList);
+    };
+    fetchData();
+  },[]);
+
+  function renderEvolution(evolutionList, pokemonsDetails) {
+    console.log(evolutionList["0"].name)
+    const index = pokemonsDetails.findIndex(element => {
+      return element.name === "squirtle";
     });
+    if (evolutionList.length === 1) {
+      return "oh no!";
+    }
+    return pokemonComponent(evolutionList[0], "Base", index);
   }
-  // }
-  function pokemonComponent(pokemon) {
+
+  function pokemonComponent(name, fase, details) {
+    console.log(details)
     return (
-      <div key={`${pokemon.name}_cmp`}>
-        <h2>{pokemon.name}</h2>
+      <div className={style[`pokemon${fase}`]} key={`${name}_cmp`}>
+        {/* <img src={pokemon.imgUrl} alt={`${name}_ev`}/> */}
+        <h2>{name}</h2>
       </div>
     );
   }
-  function putAChainIntoAContainer(chain) {
-    return (
-      <div>
-        {chain}
-      </div>
-    );
-  }
-  console.log(allChains);  
+  // console.log(data);
+  // console.log(pokemonsData);
   return (
     <div className={style.container}>
-      pala
-      <div>
-        {allChains}
-      </div>
+      {pokemonsData.length === "0" ? (
+        <div style={{color: "blue"}}>
+          cargando
+        </div>
+        ) : (
+          renderEvolution(data, pokemonsData)
+        )
+      }
     </div>
   );
 }
