@@ -4,6 +4,7 @@ import style from '../styles/components/pokemonDetails.module.scss';
 import { capitalize } from '../lib/functions';
 import { cleanEvolutionData } from '../lib/pokedex.api';
 import { useEffect, useState } from 'react';
+import EvolutionChain from './evolutionChain';
 
 export default function PokemonDetails({number, pokemonData}) {
   const pokemonName = capitalize(pokemonData.name);
@@ -13,65 +14,16 @@ export default function PokemonDetails({number, pokemonData}) {
   useEffect(() => {
     async function fetchPokemonEvolutionChain () {
       const response = await cleanEvolutionData(pokemonData.evolution_chain_raw);
-      console.log(response);
       setEvolutionChainData(response);
       setLoadingState(false);
     }
     fetchPokemonEvolutionChain();
   },[])
 
-  function displayEvolutionChain() {
-    // let base;
-    // let evolutionChainComplete = [];
-    // let singleEvolutionChain = [];
-    // evolutionChainData.forEach(element => {
-    //   // console.log(element);
-    //   // console.log(typeof element);
-    //   if (element.id) {
-    //     console.log("primer pokemon")
-    //     console.log(element.name)
-    //     singleEvolutionChain.push(
-    //       <div>
-    //         <img src={element.imgUrl} alt={`${element.name}_evl`}/>
-    //         <h3>{element.name}</h3>
-    //       </div>
-    //     );
-    //   } else {
-    //     console.log(element)
-    //     element.forEach(element2 => {
-    //       if (element2.id) {
-    //         console.log(element2.name)
-    //         singleEvolutionChain.push(
-    //           <div>
-    //             <img src={element2.imgUrl} alt={`${element2.name}_evl`}/>
-    //             <h3>{element2.name}</h3>
-    //           </div>
-    //         );
-    //       } else {
-    //         element2.forEach(element3 => {
-    //           if (element3.id) {
-    //             console.log("tercer pokemon")
-    //             console.log(element.name)
-    //             singleEvolutionChain.push(
-    //               <div style={{display: "flex", flexDirection: "row"}}>
-    //                 <img src={element3.imgUrl} alt={`${element3.name}_evl`}/>
-    //                 <h3>{element3.name}</h3>
-    //               </div>
-    //             );
-    //           }
-    //         })
-    //       }
-    //     })
-    //   }
-    //   evolutionChainComplete.push(singleEvolutionChain);
-    //   singleEvolutionChain = [];
-    // });
-    
-    return <div>
-      {"evolutionChainComplete"}
-    </div>;
+  function rederEvolution(data) {
+    console.log(data);
+    return <EvolutionChain data={data}/>;
   }
-
   return(
     <PokemonLayout type={pokemonData.types[0].type.name} name={pokemonName}>
       <Link href="/pokedex">
@@ -124,8 +76,7 @@ export default function PokemonDetails({number, pokemonData}) {
             loadingState ?
              "loading..." 
             : 
-              displayEvolutionChain()
-              
+            rederEvolution(evolutionChainData)
           }
         </div>
       </div>

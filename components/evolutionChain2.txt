@@ -1,0 +1,60 @@
+import { useEffect, useState } from 'react';
+import style from '../styles/components/evolutionChain.module.scss';
+
+export default function EvolutionChain({ data }) {
+  console.log(data);
+  const [ evolChains, setEvolChains] = useState([]);
+  useEffect(() => {
+    // console.log(data)
+    let newChain = [];
+    if (data.evolves_to.length === 0) {
+      console.log("entro en el primer if")
+      newChain.push([pokemonComponent(data)]);
+    } else {
+      console.log("entro en el else")
+      data.evolves_to.forEach(pokemon2 => {
+        if (pokemon2.evolves_to.length === 0 ) {
+          console.log("entro en el else, if")
+          newChain.push([
+            pokemonComponent(data),
+            pokemonComponent(pokemon2)
+          ]);
+        } else {
+          console.log("entro en el else, else")
+          pokemon2.evolves_to.forEach(pokemon3 => {
+              newChain.push([
+                pokemonComponent(data),
+                pokemonComponent(pokemon2),
+                pokemonComponent(pokemon3)
+              ]);
+          });
+        }
+      });
+    }
+    setEvolChains(newChain);
+  },[data])
+  // function buildTheChain(dataObject) {
+  
+  // }
+  function pokemonComponent(pokemon) {
+    return (
+      <div key={`${pokemon.name}_cmp`}>
+        <h2>{pokemon.name}</h2>
+      </div>
+    );
+  }
+  function putAChainIntoAContainer(chain) {
+    return (
+      <div>
+        {chain}
+      </div>
+    );
+  }
+  return (
+    <div className={style.container}>
+      <div>
+        {evolChains}
+      </div>
+    </div>
+  );
+}
