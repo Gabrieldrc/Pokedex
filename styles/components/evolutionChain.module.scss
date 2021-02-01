@@ -1,0 +1,21 @@
+@use '../1-helpers/variables';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(51, 50, 50);
+}
+%pokemonGrid {
+  display: flex;
+  flex-direction: row;
+  & > h2 {
+    font-size: variables.$fontSmall;
+  }
+}
+.pokemonBase {
+  $base: 20vw;
+  @extend %pokemonGrid;
+  width: 20vw;
+  height: $base;
+  background-color: blue;
+}
