@@ -2,10 +2,34 @@ import Link from 'next/link';
 import PokemonLayout from './pokemonLayout';
 import style from '../styles/components/pokemonDetails.module.scss';
 import { capitalize } from '../lib/functions';
-import EvolutionChain from './evolutionChain';
+import EvolutionChain from './evolutionChain.js';
+import { useEffect, useState } from 'react';
+import { basicPokemonData } from '../lib/pokedex.api';
 
 export default function PokemonDetails({number, pokemonData}) {
   const pokemonName = capitalize(pokemonData.name);
+
+  const [ pokemonsEvData, setPokemonsData ] = useState(undefined);
+
+  useEffect(() => {
+    (async function fetchData() {
+      let dataList = [];
+      const enterTheListAndDoTheSame = (list) => {
+        list.forEach(async (element) => {
+          if (typeof element === 'string') {
+            dataList.push(await basicPokemonData(element));
+          } else if (typeof element === "object") {
+            enterTheListAndDoTheSame(element);
+          }
+        });
+      };
+      await enterTheListAndDoTheSame(pokemonData.evolution_chain);
+      dataList.sort((a, b) => a.id - b.id);
+      setPokemonsData(dataList);
+    })();
+  },[]);
+
+
   return(
     <PokemonLayout type={pokemonData.types[0].type.name} name={pokemonName}>
       <Link href="/pokedex">
@@ -52,7 +76,12 @@ export default function PokemonDetails({number, pokemonData}) {
             </div>
           </div>
         </div>
-        <EvolutionChain data={pokemonData.evolution_chain}/>
+        {
+          typeof pokemonsEvData === "undefined"?
+          "loading..."
+          :
+          <EvolutionChain order={pokemonData.evolution_chain} data={pokemonsEvData}/>
+        }
       </div>
     </PokemonLayout>
   )
