@@ -7,7 +7,7 @@ import { capitalize } from '../lib/functions';
 export default function Abilities({ abilities }) {
   return(
     <DetailsLayout>
-      <div className={style.title1}>Abilities:</div>
+      <h1 className={style.title1}>Abilities:</h1>
       <div className={style.abilitiesContainer}>
         {abilities.map((element, index) => {
           return<Ability ability={element.ability} key={`Abilities_${index}`}/>;

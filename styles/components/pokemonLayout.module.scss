@@ -2,13 +2,14 @@
 @use '../1-helpers/variables';
 
 .container {
+  position: relative;
+  max-height: fit-content;
   height: 100vh;
   min-height: 100vh;
   width: 100%;
   max-width: 100vw;
   padding: 10px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   overflow-x: hidden;  
   background-image: linear-gradient(25deg, variables.$primaryColorDark, variables.$primaryColorLight, variables.$primaryColorDark);

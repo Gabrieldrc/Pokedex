@@ -1,5 +1,7 @@
 @use '../1-helpers/variables';
 
+$imgHeight: 25vh;
+
 %center {
   width: fit-content;
   height: fit-content;
@@ -42,38 +44,28 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: 10px;
-}
-.numberBG {
-  position: absolute;
-  right: 0;
-  top: 0;  
+  padding: 10px 10px 20px 20px;
   background-color: variables.$detailsColor;
-  width: 5em;
-  height: 5em;
-  transform: rotate(45deg);
-  margin-top: -(5em / 2);
-  margin-right: -(5em / 2);
+  border-end-start-radius: variables.$circleBorder;
 }
-$imgHeight: 25vh;
 .img {
   display: block;
   height: $imgHeight;
   width: auto;
   margin: 0vh auto;
-  z-index: 2;
-  // background-color: blue;
+  z-index: 999;
 }
 .container {
   display: flex;
   flex-direction: column;
   margin: -($imgHeight / 8) auto 0;
   background-color: white;
-  min-height: 60vh;
+  height: auto;
   width: 100%;
   border-radius: variables.$borderRadius;
   box-shadow: variables.$boxShadowCard;
   z-index: 1;
+  padding-bottom: 2rem;
   .mainName {
     font-size: variables.$fontXLarge;
     font-weight: 900;
@@ -101,7 +93,7 @@ $imgHeight: 25vh;
     }
   }
   .mainDetails {
-    margin: 2rem 0;
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: auto auto auto;
     // flex-direction: row;
