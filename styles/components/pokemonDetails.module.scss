@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .buttom {
   @extend %centerFlex;
   $base: 10vw;
@@ -70,7 +71,8 @@ $imgHeight: 25vh;
   background-color: white;
   min-height: 60vh;
   width: 100%;
-  border-radius: 5px;
+  border-radius: variables.$borderRadius;
+  box-shadow: variables.$boxShadowCard;
   z-index: 1;
   .mainName {
     font-size: variables.$fontXLarge;

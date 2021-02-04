@@ -1,5 +1,5 @@
 import style from '../../styles/pages/pokedex_index.module.scss'
-import Layout from '../../components/layout';
+import Layout from '../../components/layouts/layout';
 import GridPokemon from '../../components/gridPokemon';
 
 export default function Pokedex() {

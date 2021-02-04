@@ -4,7 +4,7 @@ import {
   getResource,
   cleanEvolutionData
 } from '../../../lib/pokedex.api';
-import Layout from '../../../components/layout';
+import Layout from '../../../components/layouts/layout';
 
 import PokemonDetails from '../../../components/pokemonDetails';
 
@@ -38,6 +38,8 @@ export async function getServerSideProps({ params }) {
         imgUrl: pokemonData.sprites.other['official-artwork'].front_default,
         types: pokemonData.types,
         weight: pokemonData.weight,
+        abilities: pokemonData.abilities,
+        stats: pokemonData.stats,
         evolution_chain: evolutionChain,
       },
     }

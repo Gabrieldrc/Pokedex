@@ -24,7 +24,8 @@ $primaryColorLight: rgb(208,247,164);
 $primaryColorDark: rgb(148,235,190);
 $secundaryColor: rgb(17,165,167);
 $detailsColor: rgb(235,94,66);
-$black: rgb(0, 0, 0);
+$darkGray: rgb(36, 35, 34);
+$transparent: rgba(0, 0, 0, 0);
 
   // Pokemon Type Background 
 $fireBackground: #2c0000 #430a0a;
@@ -55,5 +56,6 @@ $grass: rgb(155, 204, 80);
 //Other variables
 //****************
 
-$gridPokemonBorderRadius: 5px;
+$borderRadius: 5px;
 $circleBorder: 9999px;
+$boxShadowCard: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

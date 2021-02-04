@@ -2,7 +2,7 @@ import style from '../styles/components/evolutionChain.module.scss';
 import PokemonEvolCard from './pokemonEvolCard';
 
 export default function EvolutionChain({ order }) {
-  console.log(order);
+  // console.log(order);
   function renderEvolution(order) {
     let pokeComponent = [];
     (function goThroughList(list, position) {
