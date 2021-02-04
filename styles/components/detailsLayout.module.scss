@@ -1,0 +1,16 @@
+@use '../1-helpers/variables';
+
+.container {
+  position: relative;
+  background-image: linear-gradient(110deg, black 20%, variables.$darkGray 20%);
+  border-radius: variables.$borderRadius;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 0 auto;
+  color: white;
+  box-shadow: variables.$boxShadowCard;
+  min-height: (variables.$fontLarge * 7);
+  align-items: center;
+  justify-content: center;
+}
