@@ -1,0 +1,35 @@
+@use '../1-helpers/variables';
+
+%container {
+  display: flex;
+  flex-direction: row;
+  & > img {
+    width: 80%;
+  }
+  & > h2 {
+    font-size: variables.$fontSmall;
+  }
+}
+.pokemon0 {
+  $base: 20vw;
+  @extend %container;
+  width: $base;
+  height: $base;
+  background-color: blue;
+}
+
+.pokemon1 {
+  $base: 15vw;
+  @extend %container;
+  width: $base;
+  height: $base;
+  background-color: red;
+}
+
+.pokemon2 {
+  $base: 10vw;
+  @extend %container;
+  width: $base;
+  height: $base;
+  background-color: green;
+}
