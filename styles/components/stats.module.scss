@@ -1,0 +1,38 @@
+@use '../1-helpers/variables';
+
+$column: 15%;
+.chartContainer {
+  width: 90%;
+  margin: 2rem auto auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: fit-content;
+  & > .description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    color: white;
+    font-size: variables.$fontSmall * 0.7;
+    margin: auto;
+  }
+  & > .barContainer {
+    display: flex;
+    align-items: flex-end;
+    height: 150px;
+    width: 100%;
+    background-color: whitesmoke;
+    & > .bar {
+      width: 100%;
+      background-color: variables.$detailsColor;
+    }
+  }
+}
