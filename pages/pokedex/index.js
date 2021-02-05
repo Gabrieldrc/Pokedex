@@ -14,9 +14,9 @@ export default function Pokedex() {
   return (
     <Layout>
       <div className={style.container}>
-        <a href="#Ability">Ability</a>
+        <div href="#Ability">Ability</div> {/*Desactivated by moment*/}
         <a href="#Pokedex">Pokedex</a>
-        <a href="#Move">Move</a>
+        <div href="#Move">Move</div> {/*Desactivated by moment*/}
       </div>
       <div className={style.horizontal_container}>
         <div className={style.carousel}>
