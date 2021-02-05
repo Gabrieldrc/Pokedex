@@ -2,8 +2,6 @@ import DetailsLayout from './layouts/detailsLayout';
 import style from '../styles/components/stats.module.scss';
 
 export default function Stats({ stats }) {
-  const max = 150;
-  console.log(stats)
   return(
     <DetailsLayout>
       <h1>Stats:</h1>
