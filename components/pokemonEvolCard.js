@@ -16,12 +16,15 @@ export default function pokemonEvolCard({ pokemonData, position, size }) {
     <div className={style[`${size}Container`]}>
       {(function arrow() {
         let order;
-        if (position.position === 1 || !position.arrow) {
+        if (position.position === 1 || (position.position === 0 && !position.arrow)) {
+          console.log("NO flecha")
           return;
         }
-        if (position.arrow) {
+        if (position.position === 0 && position.arrow) {
+          console.log("flecha ABAJO")
           order = 4;
         } else {
+          console.log("flecha ARRIBA")
           order = 1;
         }
         return <div className={style.arrow} style={{order: order}}><div></div></div>
