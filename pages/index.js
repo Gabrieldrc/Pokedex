@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Pokedex</title>
+        <title>Pokédex</title>
       </Head>
       <section className={style.container}>
         <div className={classPokeball}>

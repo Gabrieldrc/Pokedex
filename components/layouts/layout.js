@@ -5,7 +5,7 @@ export default function Layout({ children}) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Pokedex</title>
+        <title>Pokédex</title>
       </Head>
       <>{children}</>
     </div>

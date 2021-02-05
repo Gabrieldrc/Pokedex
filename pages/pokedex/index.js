@@ -15,7 +15,7 @@ export default function Pokedex() {
     <Layout>
       <div className={style.container}>
         <div href="#Ability">Ability</div> {/*Desactivated by moment*/}
-        <a href="#Pokedex">Pokedex</a>
+        <a href="#Pokedex">Pokédex</a>
         <div href="#Move">Move</div> {/*Desactivated by moment*/}
       </div>
       <div className={style.horizontal_container}>
