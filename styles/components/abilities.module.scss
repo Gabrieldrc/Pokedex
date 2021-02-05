@@ -1,0 +1,69 @@
+@use '../1-helpers/variables';
+
+$fontWeight: 900;
+$padding: 10px;
+
+.title1 {
+  padding: $padding;
+}
+.title2 {
+  font-size: variables.$fontNormal;
+  font-weight: $fontWeight - 200;
+}
+.title3 {
+  font-size: variables.$fontSmall;
+  font-weight: $fontWeight - 200;
+}
+.abilitiesContainer {
+  height: fit-content;
+  width: 100%;
+}
+.ability {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: ($padding / 2) $padding;
+  .infoButtom {
+    width: variables.$fontNormal;
+    height: variables.$fontNormal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: variables.$fontSmall;
+    font-weight: 600;
+    background-color: white;
+    border-radius: variables.$circleBorder;
+    background-color: variables.$detailsColor;
+  } // font-size: variables.$fontSmall;
+}
+
+.infoContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: variables.$darkGray;
+  flex-direction: column;
+  & > .header {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: space-between;
+    & > .title3 {
+      padding: 5px 10px;
+      color: whitesmoke
+    }
+  }
+  .closeButtom {
+    @extend .title3;
+    background-color: black;
+    border-end-start-radius: variables.$borderRadius;
+  }
+  & > .title2, p {
+    margin: 5px 20px;
+  }
+}

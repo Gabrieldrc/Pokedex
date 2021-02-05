@@ -1,12 +1,14 @@
 import Link from 'next/link';
-import PokemonLayout from './pokemonLayout';
+import PokemonLayout from './layouts/pokemonLayout';
 import style from '../styles/components/pokemonDetails.module.scss';
 import { capitalize } from '../lib/functions';
 import EvolutionChain from './evolutionChain.js';
+import Abilities from './abilities';
+import Stats from './stats';
 
 export default function PokemonDetails({number, pokemonData}) {
   const pokemonName = capitalize(pokemonData.name);
-
+  console.log(pokemonData.stats)
   return(
     <PokemonLayout type={pokemonData.types[0].type.name} name={pokemonName}>
       <Link href="/pokedex">
@@ -15,7 +17,6 @@ export default function PokemonDetails({number, pokemonData}) {
         </a>
       </Link>
       <div className={style.number}>{number}</div>
-      {/* <div className={style.numberBG}></div> */}
       <img className={style.img} src={pokemonData.imgUrl} alt={number}/>
       <div className={style.container}>
         <div className={style.mainName}>{pokemonName}</div>
@@ -53,7 +54,9 @@ export default function PokemonDetails({number, pokemonData}) {
             </div>
           </div>
         </div>
-        <EvolutionChain order={pokemonData.evolution_chain}/>
+        <Abilities abilities={pokemonData.abilities} />
+        <Stats stats={pokemonData.stats} />
+        {/* <EvolutionChain order={pokemonData.evolution_chain}/> */}
       </div>
     </PokemonLayout>
   )
