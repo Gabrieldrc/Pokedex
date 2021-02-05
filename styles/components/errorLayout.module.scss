@@ -1,0 +1,70 @@
+@use '../1-helpers/variables';
+
+%center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  @extend %center;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-image:linear-gradient(130deg, variables.$detailsColor 35%, variables.$primaryColorDark 35%);
+  background-repeat:initial;
+  background-size: contain;
+  background-position: 0;
+  color: white;
+  & > .pokebalBackground {
+    position: absolute;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    animation-name: rotating;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    z-index: 0;
+  }
+  .card {
+    @extend %center;
+    position: relative;
+    background-color: white;
+    box-shadow: variables.$boxShadowCard;
+    border-radius: variables.$borderRadius;
+    width: 70%;
+    height: 25%;
+    color: black;
+    z-index: 1;
+    font-weight: 500;
+    flex-direction: column;
+    font-size: variables.$fontLarge;
+    .title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      font-weight: 900;
+      font-size: variables.$fontNormal;
+    }
+    & > a {
+      position: absolute;
+      bottom: 1.5rem;
+      text-decoration: none;
+      background-color: variables.$darkGray;
+      color: white;
+      font-size: variables.$fontNormal;
+      padding: 10px;
+      border-radius: variables.$borderRadius;
+      & > :active {
+        padding: 5px;
+      }
+    }
+  }
+}
+
+@keyframes rotating {
+  100% {transform: rotate(360deg);}
+}
