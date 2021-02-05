@@ -30,6 +30,7 @@ $column: 15%;
     height: 150px;
     width: 100%;
     background-color: whitesmoke;
+    border-radius: variables.$borderRadius;
     & > .bar {
       width: 100%;
       background-color: variables.$detailsColor;
