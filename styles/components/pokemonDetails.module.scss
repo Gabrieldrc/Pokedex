@@ -44,9 +44,8 @@ $imgHeight: 25vh;
   position: absolute;
   top: 0;
   right: 0;
-  padding: 10px 10px 20px 20px;
-  background-color: variables.$detailsColor;
-  border-end-start-radius: variables.$circleBorder;
+  padding: 10px 10px 40px 40px;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0) 50%, variables.$detailsColor 50%) ;
 }
 .img {
   display: block;
@@ -81,7 +80,6 @@ $imgHeight: 25vh;
     margin: 0 auto;
     height: fit-content;
     .type {
-      background-color: blue;
       color: white;
       width: 50px;
       height: fit-content;
@@ -121,3 +119,22 @@ $imgHeight: 25vh;
     }
   }
 }
+
+.type_steel{@extend .type; background-color: variables.$type_steel;}
+.type_dark{@extend .type; background-color: variables.$type_dark;}
+.type_dragon{@extend .type; background-color: variables.$type_dragon;}
+.type_ghost{@extend .type; background-color: variables.$type_ghost;}
+.type_ice{@extend .type; background-color: variables.$type_ice;}
+.type_rock{@extend .type; background-color: variables.$type_rock;}
+.type_psychic{@extend .type; background-color: variables.$type_psychic;}
+.type_fighting{@extend .type; background-color: variables.$type_fighting;}
+.type_fairy{@extend .type; background-color: variables.$type_fairy;}
+.type_ground{@extend .type; background-color: variables.$type_ground;}
+.type_electric{@extend .type; background-color: variables.$type_electric;}
+.type_normal{@extend .type; background-color: variables.$type_normal;}
+.type_bug{@extend .type; background-color: variables.$type_bug;}
+.type_water{@extend .type; background-color: variables.$type_water;}
+.type_flying{@extend .type; background-color: variables.$type_flying;}
+.type_fire{@extend .type; background-color: variables.$type_fire;}
+.type_poison{@extend .type; background-color: variables.$type_poison;}
+.type_grass{@extend .type; background-color: variables.$type_grass;}

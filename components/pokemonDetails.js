@@ -8,7 +8,6 @@ import Stats from './stats';
 
 export default function PokemonDetails({number, pokemonData}) {
   const pokemonName = capitalize(pokemonData.name);
-  console.log(pokemonData.stats)
   return(
     <PokemonLayout type={pokemonData.types[0].type.name} name={pokemonName}>
       <Link href="/pokedex">
@@ -24,7 +23,7 @@ export default function PokemonDetails({number, pokemonData}) {
           {
             pokemonData.types.map(function (index) {
               const type = index.type.name;
-              return <div key={type} className={style.type}>{type}</div>;
+              return <div key={type} className={style[`type_${index.type.name}`]}>{type}</div>;
             })
           }
         </div>
@@ -56,7 +55,7 @@ export default function PokemonDetails({number, pokemonData}) {
         </div>
         <Abilities abilities={pokemonData.abilities} />
         <Stats stats={pokemonData.stats} />
-        {/* <EvolutionChain order={pokemonData.evolution_chain}/> */}
+        <EvolutionChain order={pokemonData.evolution_chain}/>
       </div>
     </PokemonLayout>
   )
