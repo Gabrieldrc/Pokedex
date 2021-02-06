@@ -44,7 +44,7 @@ $widthSmall: 30%;
   flex-direction: column;
   height: fit-content;
   width: 100%;
-  & > img {
+  & img {
     border-radius: variables.$borderRadius;
     background-color: white;
     box-shadow: variables.$boxShadowCard;

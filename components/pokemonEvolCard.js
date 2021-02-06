@@ -1,6 +1,7 @@
 import { basicPokemonDataCS, basicPokemonDataFilter } from '../lib/pokedex.api';
 import style from '../styles/components/pokemonEvolCard.module.scss';
 import { capitalize, pokemonIdToString, cleanUnderscore } from '../lib/functions';
+import Link from 'next/link';
 
 export default function pokemonEvolCard({ pokemonData, position, size }) {
   const { data, isLoading, isError } = basicPokemonDataCS(pokemonData.name);
@@ -17,14 +18,11 @@ export default function pokemonEvolCard({ pokemonData, position, size }) {
       {(function arrow() {
         let order;
         if (position.position === 1 || (position.position === 0 && !position.arrow)) {
-          console.log("NO flecha")
           return;
         }
         if (position.position === 0 && position.arrow) {
-          console.log("flecha ABAJO")
           order = 4;
         } else {
-          console.log("flecha ARRIBA")
           order = 1;
         }
         return <div className={style.arrow} style={{order: order}}><div></div></div>
@@ -37,7 +35,9 @@ export default function pokemonEvolCard({ pokemonData, position, size }) {
       })()}
 
       <div className={style.pokemonContainer} style={{order: "3"}}>
-        <img src={pokemon.imgUrl} alt={`${pokemon.name}_evol`}/>
+        <Link href={`/pokedex/pokemon/${pokemonIdToString(pokemon.id)}`}>
+          <a><img src={pokemon.imgUrl} alt={`${pokemon.name}_evol`}/></a>
+        </Link>
         <h2>{capitalize(pokemon.name)} <span>#{pokemonIdToString(pokemon.id)}</span></h2>
       </div>
     </div>
