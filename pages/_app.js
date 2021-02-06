@@ -11,21 +11,21 @@ export default function App({ Component, pageProps }) {
     const handleRouteChange = (url, { shallow }) => {
       const load = document.getElementById("loading_page_animation");
       load.style.display = "block";
-      console.log(
-        `App is changing to ${url} ${
-          shallow ? 'with' : 'without'
-        } shallow routing`
-      )
+      // console.log(
+      //   `App is changing to ${url} ${
+      //     shallow ? 'with' : 'without'
+      //   } shallow routing`
+      // )
     }
 
     const handleRouteComplete = (url, { shallow }) => {
       const load = document.getElementById("loading_page_animation");
       load.style.display = "none";
-      console.log(
-        `App is changing to ${url} ${
-          shallow ? 'with' : 'without'
-        } shallow routing`
-      )
+      // console.log(
+      //   `App is changing to ${url} ${
+      //     shallow ? 'with' : 'without'
+      //   } shallow routing`
+      // )
     }
 
     router.events.on('routeChangeStart', handleRouteChange);

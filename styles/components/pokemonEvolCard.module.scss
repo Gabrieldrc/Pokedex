@@ -1,0 +1,79 @@
+@use '../1-helpers/variables';
+
+$widthBig: 50%;
+$widthMedium: 35%;
+$widthSmall: 30%;
+
+%container {
+  display: flex;
+  flex-direction: column;
+  max-width: $widthBig;
+  min-width: $widthSmall;
+  height: fit-content;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+.bigContainer {
+  @extend %container;
+  width: $widthBig;
+}
+.mediumContainer {
+  @extend %container;
+  width: $widthMedium;
+}
+.smallContainer {
+  @extend %container;
+  width: $widthSmall;
+}
+.arrow {
+  height: 50px;
+  width: 100%;
+  font-size: variables.$fontXLarge;
+  & > div {
+    transform: rotate(45deg);
+    width: 40px;
+    height: 40px;
+    border-bottom: 10px solid white;
+    border-right: 10px solid variables.$detailsColor;
+    margin: auto;
+  }
+}
+
+.pokemonContainer {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 100%;
+  & img {
+    border-radius: variables.$borderRadius;
+    background-color: white;
+    box-shadow: variables.$boxShadowCard;
+    width: 100%;
+    margin: auto;
+  }
+  & > h2 {
+    color: variables.$darkGray;
+    font-size: variables.$fontSmall;
+    width: fit-content;
+    color: white;
+    margin: 0 auto;
+    & > span {
+      font-weight: 900;
+      color: variables.$detailsColor;
+    }
+  }
+}
+
+.evolveDetails {
+  display: flex;
+  height: 3rem;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: variables.$fontSmall * 0.8;
+  // background-color: red;
+  & > .key {
+    color: variables.$secundaryColor;
+  }
+}

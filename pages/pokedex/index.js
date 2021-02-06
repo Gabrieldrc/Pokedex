@@ -1,11 +1,11 @@
 import style from '../../styles/pages/pokedex_index.module.scss'
-import Layout from '../../components/layout';
+import Layout from '../../components/layouts/layout';
 import GridPokemon from '../../components/gridPokemon';
 
 export default function Pokedex() {
   const renderAllGridPokemon = () => {
     let pokemons = [];
-    for (let i = 1; i < 300; i++) {
+    for (let i = 1; i < 807; i++) {
       pokemons.push(<GridPokemon number={i} key={i}/>);
     }
     return pokemons;
@@ -13,11 +13,11 @@ export default function Pokedex() {
 
   return (
     <Layout>
-      <div className={style.container}>
-        <a href="#Ability">Ability</a>
-        <a href="#Pokedex">Pokedex</a>
-        <a href="#Move">Move</a>
-      </div>
+      {/* <div className={style.container}>
+        <div href="#Ability">Ability</div>
+        <a href="#Pokedex">Pokédex</a>
+        <div href="#Move">Move</div>
+      </div> */}
       <div className={style.horizontal_container}>
         <div className={style.carousel}>
           <div className={style.slider}>

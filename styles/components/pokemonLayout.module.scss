@@ -1,28 +1,31 @@
 @use '../1-tools/functions';
 @use '../1-helpers/variables';
 
-%container {
+.container {
+  position: relative;
+  max-height: fit-content;
   height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   max-width: 100vw;
   padding: 10px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: hidden;  
+  background-image: linear-gradient(25deg, variables.$primaryColorDark, variables.$primaryColorLight, variables.$primaryColorDark);
 }
 
-.fire {
-  @extend %container;
-  @include functions.toBottomBG(variables.$fireBackground);
-}
+// .fire {
+//   @extend .container;
+//   @include functions.toBottomBG(variables.$fireBackground);
+// }
 
-.water {
-  @extend %container;
-  @include functions.toBottomBG(variables.$waterBackground);
-}
+// .water {
+//   @extend .container;
+//   @include functions.toBottomBG(variables.$waterBackground);
+// }
 
-.grass {
-  @extend %container;
-  @include functions.toBottomBG(variables.$grassBackground);
-}
+// .grass {
+//   @extend .container;
+//   @include functions.toBottomBG(variables.$grassBackground);
+// }

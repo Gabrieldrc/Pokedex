@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import PokemonLayout from './pokemonLayout';
+import PokemonLayout from './layouts/pokemonLayout';
 import style from '../styles/components/pokemonDetails.module.scss';
 import { capitalize } from '../lib/functions';
-import EvolutionChain from './evolutionChain';
+import EvolutionChain from './evolutionChain.js';
+import Abilities from './abilities';
+import Stats from './stats';
 
 export default function PokemonDetails({number, pokemonData}) {
   const pokemonName = capitalize(pokemonData.name);
@@ -14,7 +16,6 @@ export default function PokemonDetails({number, pokemonData}) {
         </a>
       </Link>
       <div className={style.number}>{number}</div>
-      {/* <div className={style.numberBG}></div> */}
       <img className={style.img} src={pokemonData.imgUrl} alt={number}/>
       <div className={style.container}>
         <div className={style.mainName}>{pokemonName}</div>
@@ -22,7 +23,7 @@ export default function PokemonDetails({number, pokemonData}) {
           {
             pokemonData.types.map(function (index) {
               const type = index.type.name;
-              return <div key={type} className={style.type}>{type}</div>;
+              return <div key={type} className={style[`type_${index.type.name}`]}>{type}</div>;
             })
           }
         </div>
@@ -52,7 +53,9 @@ export default function PokemonDetails({number, pokemonData}) {
             </div>
           </div>
         </div>
-        <EvolutionChain data={pokemonData.evolution_chain}/>
+        <Abilities abilities={pokemonData.abilities} />
+        <Stats stats={pokemonData.stats} />
+        <EvolutionChain order={pokemonData.evolution_chain}/>
       </div>
     </PokemonLayout>
   )

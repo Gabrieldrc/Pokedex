@@ -24,7 +24,9 @@ $primaryColorLight: rgb(208,247,164);
 $primaryColorDark: rgb(148,235,190);
 $secundaryColor: rgb(17,165,167);
 $detailsColor: rgb(235,94,66);
+$darkGray: rgb(36, 35, 34);
 $black: rgb(0, 0, 0);
+$transparent: rgba(0, 0, 0, 0);
 
   // Pokemon Type Background 
 $fireBackground: #2c0000 #430a0a;
@@ -32,28 +34,29 @@ $waterBackground: #0053ee #0091d4;
 $grassBackground: #00ee7f #00d483;
 
   // Pokemon Type Colors
-$steel: rgb(158, 183, 184);
-$dark: rgb(112, 112, 112);
-$dragon: rgb(241, 110, 87);
-$ghost: rgb(123, 98, 163);
-$ice: rgb(81, 196, 231);
-$rock: rgb(163, 140, 33);
-$psychic: rgb(243, 102, 185);
-$fighting: rgb(213, 103, 35);
-$fairy: rgb(253, 185, 233);
-$ground: rgb(171, 152, 66);
-$electric: rgb(238, 213, 53);
-$normal: rgb(164, 172, 175);
-$bug: rgb(114, 159, 63);
-$water: rgb(69, 146, 196);
-$flying: rgb(61, 199, 239);
-$fire: rgb(254, 126, 37);
-$poison: rgb(185, 127, 201);
-$grass: rgb(155, 204, 80);
+$type_steel: rgb(158, 183, 184);
+$type_dark: rgb(112, 112, 112);
+$type_dragon: rgb(241, 110, 87);
+$type_ghost: rgb(123, 98, 163);
+$type_ice: rgb(81, 196, 231);
+$type_rock: rgb(163, 140, 33);
+$type_psychic: rgb(243, 102, 185);
+$type_fighting: rgb(213, 103, 35);
+$type_fairy: rgb(253, 185, 233);
+$type_ground: rgb(171, 152, 66);
+$type_electric: rgb(238, 213, 53);
+$type_normal: rgb(164, 172, 175);
+$type_bug: rgb(114, 159, 63);
+$type_water: rgb(69, 146, 196);
+$type_flying: rgb(61, 199, 239);
+$type_fire: rgb(254, 126, 37);
+$type_poison: rgb(185, 127, 201);
+$type_grass: rgb(155, 204, 80);
 
 //****************
 //Other variables
 //****************
 
-$gridPokemonBorderRadius: 5px;
+$borderRadius: 5px;
 $circleBorder: 9999px;
+$boxShadowCard: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

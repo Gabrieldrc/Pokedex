@@ -1,61 +1,44 @@
-import { useEffect, useState } from 'react';
-import { basicPokemonData } from '../lib/pokedex.api';
-
 import style from '../styles/components/evolutionChain.module.scss';
+import DetailsLayout from './layouts/detailsLayout';
+import PokemonEvolCard from './pokemonEvolCard';
 
-export default function EvolutionChain({ data }) {
-  const [ pokemonsData, setPokemonsData ] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      let dataList = [];
-      const enterTheListAndDoTheSame = (list) => {
-        list.forEach(async (element) => {
-          if (typeof element === 'string') {
-            dataList.push(await basicPokemonData(element));
-          } else if (typeof element === "object") {
-            enterTheListAndDoTheSame(element);
-          }
-        });
-      };
-      await enterTheListAndDoTheSame(data);
-      setPokemonsData(dataList);
-    };
-    fetchData();
-  },[]);
-
-  function renderEvolution(evolutionList, pokemonsDetails) {
-    console.log(evolutionList["0"].name)
-    const index = pokemonsDetails.findIndex(element => {
-      return element.name === "squirtle";
-    });
-    if (evolutionList.length === 1) {
-      return "oh no!";
-    }
-    return pokemonComponent(evolutionList[0], "Base", index);
-  }
-
-  function pokemonComponent(name, fase, details) {
-    console.log(details)
-    return (
-      <div className={style[`pokemon${fase}`]} key={`${name}_cmp`}>
-        {/* <img src={pokemon.imgUrl} alt={`${name}_ev`}/> */}
-        <h2>{name}</h2>
-      </div>
-    );
-  }
-  // console.log(data);
-  // console.log(pokemonsData);
-  return (
-    <div className={style.container}>
-      {pokemonsData.length === "0" ? (
-        <div style={{color: "blue"}}>
-          cargando
-        </div>
-        ) : (
-          renderEvolution(data, pokemonsData)
-        )
+export default function EvolutionChain({ order }) {
+  let pokeComponent = [];
+  (function goThroughList(list, position, size = "big") {
+    list.forEach(pokemon => {
+      if (pokemon.name) {
+        if (typeof pokeComponent[position] === "undefined") {
+          pokeComponent.push([]);
+        }
+        pokeComponent[position].push(
+            <PokemonEvolCard 
+              pokemonData = {pokemon}
+              position = {{
+                position: position,
+                arrow: (position === 0 && list.length > 1),
+              }}
+              size = {size}
+              key = {`${pokemon.name}_${position}`}
+            />
+          );
+      } else {
+        let newSize;
+        if ( pokemon.filter(element => element.name).length >= 2) {
+          newSize = "medium";
+        } else {
+          newSize = "big";
+        }
+        goThroughList(pokemon, position + 1, newSize);
       }
-    </div>
+    });
+  })(order, 0);
+    
+  return (
+    <DetailsLayout evolDetails={true}>
+      <h1>Evolutions: <span className={style.span}>{typeof pokeComponent[1] === "undefined"? "This Pokémon does not evolve.": ""}</span></h1>
+      <div className={style.faseContainerBase}>{pokeComponent[0]}</div>
+      {typeof pokeComponent[1] !== "undefined"? <div className={style.faseContainer}>{pokeComponent[1]}</div>: ""}
+      {typeof pokeComponent[2] !== "undefined"? <div className={style.faseContainer}>{pokeComponent[2]}</div>: ""}
+    </DetailsLayout>
   );
 }

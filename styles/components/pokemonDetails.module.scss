@@ -1,5 +1,7 @@
 @use '../1-helpers/variables';
 
+$imgHeight: 25vh;
+
 %center {
   width: fit-content;
   height: fit-content;
@@ -11,6 +13,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .buttom {
   @extend %centerFlex;
   $base: 10vw;
@@ -41,37 +44,27 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: 10px;
+  padding: 10px 10px 40px 40px;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0) 50%, variables.$detailsColor 50%) ;
 }
-.numberBG {
-  position: absolute;
-  right: 0;
-  top: 0;  
-  background-color: variables.$detailsColor;
-  width: 5em;
-  height: 5em;
-  transform: rotate(45deg);
-  margin-top: -(5em / 2);
-  margin-right: -(5em / 2);
-}
-$imgHeight: 25vh;
 .img {
   display: block;
   height: $imgHeight;
   width: auto;
   margin: 0vh auto;
-  z-index: 2;
-  // background-color: blue;
+  z-index: 999;
 }
 .container {
   display: flex;
   flex-direction: column;
   margin: -($imgHeight / 8) auto 0;
   background-color: white;
-  min-height: 60vh;
+  height: auto;
   width: 100%;
-  border-radius: 5px;
+  border-radius: variables.$borderRadius;
+  box-shadow: variables.$boxShadowCard;
   z-index: 1;
+  padding-bottom: 2rem;
   .mainName {
     font-size: variables.$fontXLarge;
     font-weight: 900;
@@ -87,7 +80,6 @@ $imgHeight: 25vh;
     margin: 0 auto;
     height: fit-content;
     .type {
-      background-color: blue;
       color: white;
       width: 50px;
       height: fit-content;
@@ -99,7 +91,7 @@ $imgHeight: 25vh;
     }
   }
   .mainDetails {
-    margin: 2rem 0;
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: auto auto auto;
     // flex-direction: row;
@@ -127,3 +119,22 @@ $imgHeight: 25vh;
     }
   }
 }
+
+.type_steel{@extend .type; background-color: variables.$type_steel;}
+.type_dark{@extend .type; background-color: variables.$type_dark;}
+.type_dragon{@extend .type; background-color: variables.$type_dragon;}
+.type_ghost{@extend .type; background-color: variables.$type_ghost;}
+.type_ice{@extend .type; background-color: variables.$type_ice;}
+.type_rock{@extend .type; background-color: variables.$type_rock;}
+.type_psychic{@extend .type; background-color: variables.$type_psychic;}
+.type_fighting{@extend .type; background-color: variables.$type_fighting;}
+.type_fairy{@extend .type; background-color: variables.$type_fairy;}
+.type_ground{@extend .type; background-color: variables.$type_ground;}
+.type_electric{@extend .type; background-color: variables.$type_electric;}
+.type_normal{@extend .type; background-color: variables.$type_normal;}
+.type_bug{@extend .type; background-color: variables.$type_bug;}
+.type_water{@extend .type; background-color: variables.$type_water;}
+.type_flying{@extend .type; background-color: variables.$type_flying;}
+.type_fire{@extend .type; background-color: variables.$type_fire;}
+.type_poison{@extend .type; background-color: variables.$type_poison;}
+.type_grass{@extend .type; background-color: variables.$type_grass;}

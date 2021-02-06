@@ -1,19 +1,12 @@
 import Link from 'next/link';
 import styles from '../styles/components/gridPokemon.module.scss';
 import { getPokemonImageDetailSrc } from '../lib/pokemon_images.sevices';
+import { pokemonIdToString } from '../lib/functions';
 
 const pokemonLink = "/pokedex/pokemon/";
 
 export default function GridPokemon({ number }) {
-  let numberString;
-  if (number.toString().length == 1) {
-    numberString = '00' + number;
-  } else if (number.toString().length == 2) {
-    numberString = '0' + number;
-  } else {
-    numberString = number.toString();
-  }
-
+  let numberString = pokemonIdToString(number);
 
   return(
     <Link href={pokemonLink + numberString}>
