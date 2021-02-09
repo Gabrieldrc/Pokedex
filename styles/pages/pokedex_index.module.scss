@@ -19,7 +19,7 @@
 .horizontal_container {
   white-space: nowrap;
   height: 100%;
-  max-height: 95vh;
+  max-height: 100vh;
   width: auto;
   .carousel {
     width: 100%;
@@ -50,7 +50,6 @@
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 5px;
-  flex-wrap: wrap;
   overflow-y: auto;
   overflow-x: hidden;
   height: auto;
@@ -58,3 +57,13 @@
   padding-bottom: 10vh;
 }
 
+$minVWTablet: variables.$minVWTablet;
+$minVWDesktop: variables.$minVWDesktop;
+@media only screen and (min-width: $minVWTablet) {
+  .vertical_container {
+    max-width: ($minVWTablet + (($minVWDesktop - $minVWTablet)/2));
+    margin: 0 auto;
+    // background-color: red;
+    grid-template-columns: auto auto auto auto;
+  }
+}
