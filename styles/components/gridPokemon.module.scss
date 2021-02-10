@@ -52,7 +52,7 @@
   background-color: variables.$detailsColor;
   color: white;
   width: fit-content;
-  padding: 1vh 2vw;
+  padding: 1vw;
   font-size: variables.$fontNormal;
   border-top-left-radius: variables.$borderRadius;
   border-bottom-right-radius: 25px;
@@ -63,10 +63,25 @@ $minVWTablet: variables.$minVWTablet;
 $minVWDesktop: variables.$minVWDesktop;
 @media only screen and (min-width: $minVWTablet) {
   .container {
-    // background-color: yellow;
     width: auto;
     height: (100vw / 4.5);  
     padding: 3vh 1vw 1vw;
   }
+}
 
+$maxWVerticalC: variables.$maxWVerticalC;
+@media only screen and (min-width: $minVWDesktop) {
+  .container {
+    width: 100%/4;
+    max-width: variables.$gpBase;
+    max-height: $maxWVerticalC/4;  
+    padding: 3vh 1vw 1vw;
+    // background-color: red;
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .number {
+    padding: 1vh;
+  }
 }
