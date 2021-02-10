@@ -4,24 +4,19 @@
   width: 100%;
   height: auto;
   min-height: 100vh;
-  background-color: variables.$darkGray;
+  background-color: variables.$detailsColor;
   background-repeat: no-repeat;
   background-position: 0 0;
-  background-image: variables.$pokedexBackgroundTop;
+  display: flex;
+  align-items: center;
+  background-image: variables.$linearGradientGreen;
 }
 
 $minVWDesktop: variables.$minVWDesktop;
 $minVWTablet: variables.$minVWTablet;
 @media only screen and (min-width: $minVWTablet) {
   .container {
-    background-color: variables.$darkGray;
-  }
-}
-
-$maxWVerticalC: variables.$maxWVerticalC;
-@media only screen and (min-width: $minVWDesktop) {
-  .container {
-    background-image: url('/images/pokeball_white_bg.png');
+    background-image: url('/images/pokeball_white_bg.png'), variables.$linearGradientBlue;
     background-attachment: fixed;
   }
 }

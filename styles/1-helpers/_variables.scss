@@ -28,7 +28,9 @@ $darkGray: rgb(36, 35, 34);
 $black: rgb(0, 0, 0);
 $transparent: rgba(0, 0, 0, 0);
 
-$pokedexBackgroundTop: linear-gradient(to bottom, $primaryColorLight, $primaryColorDark);
+$linearGradientGreen: linear-gradient(to right, $primaryColorLight, $primaryColorDark);
+$radialGradientGreen: radial-gradient(circle, $primaryColorDark, $transparent 50%);
+$linearGradientBlue: linear-gradient(to left top, rgb(0, 217, 255), rgb(63, 134, 248));
   // Pokemon Type Background 
 $fireBackground: #2c0000 #430a0a;
 $waterBackground: #0053ee #0091d4;

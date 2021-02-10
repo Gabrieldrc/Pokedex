@@ -52,12 +52,12 @@
   gap: variables.$gpGap;
   overflow-y: auto;
   overflow-x: hidden;
-  height: auto;
+  height: 100vh;
   width: 95%;
   padding: variables.$gpGap variables.$gpGap 10vh;
-  background-image: variables.$pokedexBackgroundTop;
+  background-image: variables.$linearGradientGreen;
+  background-size: 100vh;
   margin: 0 auto;
-  border-radius: variables.$borderRadius;
 }
 
 $minVWTablet: variables.$minVWTablet;
@@ -67,7 +67,7 @@ $maxWVerticalC: variables.$maxWVerticalC;
   .vertical_container {
     max-width: ($minVWTablet + (($minVWDesktop - $minVWTablet)/2));
     margin: 0 auto;
-    // background-color: red;
+    height: auto; 
     grid-template-columns: auto auto auto auto;
   }
 }
@@ -78,10 +78,10 @@ $gpGapD: variables.$gpGapD;
 @media only screen and (min-width: $minVWDesktop) {
   .vertical_container {
     $padding: $gpGapD;
-    max-width: ($gpBase*4) + ($gpGapD * 3) + 10 + ($padding * 2);
+    max-width: ($gpBase*4) + ($gpGapD * 3) + 10 + ($padding * 4);
     margin: 0 auto;
     gap: $gpGapD;
     grid-template-columns: auto auto auto auto;
-    padding: $gpGapD;
+    padding: $gpGapD * 2;
   }
 }

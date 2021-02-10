@@ -16,7 +16,7 @@
   position: relative;
   border-radius: variables.$borderRadius;
   border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.10);
+  background-image: variables.$radialGradientGreen;
   padding: 5vw 1vw 1vw 1vw;
   &:active {
     background-color: rgba(255, 255, 255, 0.3);
@@ -54,8 +54,7 @@
   width: fit-content;
   padding: 1vw;
   font-size: variables.$fontNormal;
-  border-top-left-radius: variables.$borderRadius;
-  border-bottom-right-radius: 25px;
+  border-radius: variables.$borderRadius;
   z-index: 2;
 }
 
@@ -76,7 +75,6 @@ $maxWVerticalC: variables.$maxWVerticalC;
     max-width: variables.$gpBase;
     max-height: $maxWVerticalC/4;  
     padding: 3vh 1vw 1vw;
-    // background-color: red;
   }
 }
 
