@@ -16,16 +16,18 @@ export default function PokemonDetails({number, pokemonData}) {
         </a>
       </Link>
       <div className={style.number}>{number}</div>
-      <img className={style.img} src={pokemonData.imgUrl} alt={number}/>
       <div className={style.container}>
-        <div className={style.mainName}>{pokemonName}</div>
-        <div className={style.types}>
-          {
-            pokemonData.types.map(function (index) {
-              const type = index.type.name;
-              return <div key={type} className={style[`type_${index.type.name}`]}>{type}</div>;
-            })
-          }
+        <img className={style.img} src={pokemonData.imgUrl} alt={number}/>
+        <div>
+          <div className={style.mainName}>{pokemonName}</div>
+          <div className={style.types}>
+            {
+              pokemonData.types.map(function (index) {
+                const type = index.type.name;
+                return <div key={type} className={style[`type_${index.type.name}`]}>{type}</div>;
+              })
+            }
+          </div>
         </div>
         <div className={style.mainDetails}>
           <div className={style.grid}>
@@ -53,8 +55,10 @@ export default function PokemonDetails({number, pokemonData}) {
             </div>
           </div>
         </div>
-        <Abilities abilities={pokemonData.abilities} />
-        <Stats stats={pokemonData.stats} />
+        <div className={style.abStContainer}>
+          <Abilities abilities={pokemonData.abilities} />
+          <Stats stats={pokemonData.stats} />
+        </div>
         <EvolutionChain order={pokemonData.evolution_chain}/>
       </div>
     </PokemonLayout>

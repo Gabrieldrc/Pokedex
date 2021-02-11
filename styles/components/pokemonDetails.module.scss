@@ -3,8 +3,9 @@
 $minVWTablet: variables.$minVWTablet;
 $minVWDesktop: variables.$minVWDesktop;
 $maxWVerticalC: variables.$maxWVerticalC;
-
+$container: 375px;
 $imgHeight: 25vh;
+$mDMarginTop: 2rem;
 
 %center {
   width: fit-content;
@@ -41,7 +42,6 @@ $imgHeight: 25vh;
     border-radius: inherit;
     background-color: rgb(148,235,190, 0.5);
     border: 2px solid variables.$secundaryColor;
-    // opacity: 0.5;
   }
 }
 .number {
@@ -55,17 +55,17 @@ $imgHeight: 25vh;
   display: block;
   height: $imgHeight;
   width: auto;
-  margin: 0vh auto;
+  margin: -($imgHeight * 0.8) auto 0vh;
   z-index: 999;
 }
 .container {
   display: flex;
   flex-direction: column;
-  margin: -($imgHeight / 8) auto 0;
+  margin: $imgHeight auto 0;
   background-color: white;
   height: auto;
   width: 100%;
-  max-width: 375px;
+  max-width: $container;
   border-radius: variables.$borderRadius;
   box-shadow: variables.$boxShadowCard;
   z-index: 1;
@@ -73,10 +73,9 @@ $imgHeight: 25vh;
   .mainName {
     font-size: variables.$fontXLarge;
     font-weight: 900;
-    margin: 1.5em auto 0.2em;
+    margin: 0 auto 0.2em;
     height: fit-content;
     width: fit-content;
-    // background-color: red;
   }
   .types {
     display: flex;
@@ -96,21 +95,18 @@ $imgHeight: 25vh;
     }
   }
   .mainDetails {
-    margin-top: 2rem;
+    margin-top: $mDMarginTop;
     display: grid;
     grid-template-columns: auto auto auto;
-    // flex-direction: row;
-    // justify-content: space-around;
+    width: 100%;
     .grid {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      // background-color: blue;
       .key {
         @extend %center;              
         font-size: variables.$fontNormal;
         font-weight: 300;
-        // background-color: red;
       }
       .value {
         @extend %center;          
@@ -144,7 +140,6 @@ $imgHeight: 25vh;
 .type_poison{@extend .type; background-color: variables.$type_poison;}
 .type_grass{@extend .type; background-color: variables.$type_grass;}
 
-
 @media only screen and (min-width: $minVWTablet) {
   .buttom {
     $baseT: 5vw;
@@ -159,8 +154,22 @@ $imgHeight: 25vh;
   }
 }
 
-@media only screen and (min-width: $minVWDesktop) {
+@media only screen and (min-width: ($container * 2)) {
   .container {
-    flex-direction: row;
+    width: $container * 2;
+    max-width: $container * 2;
+    padding: 0 5%;
+    .mainDetails {
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .abStContainer {
+      display: grid;
+      grid-template-columns: auto auto;
+      background-color: blue;
+      max-width: 100%;
+      width: 100%;
+    }
   }
 }
