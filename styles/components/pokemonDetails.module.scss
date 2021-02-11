@@ -1,5 +1,9 @@
 @use '../1-helpers/variables';
 
+$minVWTablet: variables.$minVWTablet;
+$minVWDesktop: variables.$minVWDesktop;
+$maxWVerticalC: variables.$maxWVerticalC;
+
 $imgHeight: 25vh;
 
 %center {
@@ -61,6 +65,7 @@ $imgHeight: 25vh;
   background-color: white;
   height: auto;
   width: 100%;
+  max-width: 375px;
   border-radius: variables.$borderRadius;
   box-shadow: variables.$boxShadowCard;
   z-index: 1;
@@ -138,3 +143,24 @@ $imgHeight: 25vh;
 .type_fire{@extend .type; background-color: variables.$type_fire;}
 .type_poison{@extend .type; background-color: variables.$type_poison;}
 .type_grass{@extend .type; background-color: variables.$type_grass;}
+
+
+@media only screen and (min-width: $minVWTablet) {
+  .buttom {
+    $baseT: 5vw;
+    left: 50vw - ($baseT /2);
+    width: $baseT + 2;
+    height: $baseT + 2;
+    font-size: variables.$fontNormal;
+    .innerCircle {
+      width: $baseT;
+      height: $baseT;
+    }
+  }
+}
+
+@media only screen and (min-width: $minVWDesktop) {
+  .container {
+    flex-direction: row;
+  }
+}
