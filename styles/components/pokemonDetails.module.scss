@@ -3,9 +3,10 @@
 $minVWTablet: variables.$minVWTablet;
 $minVWDesktop: variables.$minVWDesktop;
 $maxWVerticalC: variables.$maxWVerticalC;
-$container: 375px;
+$container: variables.$pDContainer;
 $imgHeight: 25vh;
 $mDMarginTop: 2rem;
+$maxWVerticalC: variables.$maxWVerticalC;
 
 %center {
   width: fit-content;
@@ -157,7 +158,7 @@ $mDMarginTop: 2rem;
 @media only screen and (min-width: ($container * 2)) {
   .container {
     width: $container * 2;
-    max-width: $container * 2;
+    max-width: 1024px;
     padding: 0 5%;
     .mainDetails {
       width: 85%;
@@ -166,10 +167,27 @@ $mDMarginTop: 2rem;
     }
     .abStContainer {
       display: grid;
-      grid-template-columns: auto auto;
-      background-color: blue;
-      max-width: 100%;
+      grid-template-columns: 40% 50%;
       width: 100%;
+      justify-content: space-between;
+    }
+  }
+}
+
+@media only screen and (min-width: $maxWVerticalC) {
+  .container {
+    width: $maxWVerticalC;
+    padding: 0 1.5%;
+    .mainDetails {
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .abStContainer {
+      display: grid;
+      grid-template-columns: 40% 50%;
+      width: 100%;
+      justify-content: space-between;
     }
   }
 }

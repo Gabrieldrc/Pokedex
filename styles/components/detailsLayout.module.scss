@@ -2,7 +2,6 @@
 
 %container {
   position: relative;
-  // background-image: linear-gradient(110deg, black 20%, variables.$darkGray 20%);
   border-radius: variables.$borderRadius;
   display: flex;
   flex-direction: column;
@@ -33,4 +32,11 @@
 .evolContainer {
   @extend %container;
   background-image: linear-gradient(140deg, black 20%, variables.$darkGray 20%, variables.$darkGray 80%, black 20%);
+}
+
+@media only screen and (min-width: (variables.$pDContainer *2)) {
+  .container {
+    margin: 2rem 0 0;
+    width: auto;
+  }
 }
