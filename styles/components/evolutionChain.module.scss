@@ -1,16 +1,37 @@
 @use '../1-helpers/variables';
 
-// variables.$
+$marginTop: 2rem;
 
 .span {
   color: white;
   font-size: variables.$fontSmall;
   font-weight: 400;
 }
-.faseContainer {
+.fase0 {
+  display: flex;
+  margin-top: $marginTop;
+}
+.fase1 {
   display: flex;
   flex-wrap: wrap;
 }
-.faseContainerBase {
-  margin-top: 2rem;
+.fase2 {
+  display: flex;
+}
+
+@media only screen and (min-width: (variables.$pDContainer *2)) {
+  $details: 3rem;
+  .fase0 {
+    margin-top: $marginTop + $details;  
+  }
+  %fase12 {
+    margin-top: $marginTop;
+  }
+  .fase1 {
+    @extend %fase12;
+  }
+  .fase2 {
+    @extend %fase12;
+    flex-direction: column;
+  }
 }

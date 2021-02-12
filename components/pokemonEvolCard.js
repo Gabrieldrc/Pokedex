@@ -11,7 +11,6 @@ export default function pokemonEvolCard({ pokemonData, position, size }) {
   if (isError) {
     return(<div>ERROR</div>);
   }
-
   const pokemon = basicPokemonDataFilter(data.data);
   return(
     <div className={style[`${size}Container`]}>
@@ -21,20 +20,20 @@ export default function pokemonEvolCard({ pokemonData, position, size }) {
           return;
         }
         if (position.position === 0 && position.arrow) {
-          order = 4;
+          order = 3;
         } else {
           order = 1;
         }
         return <div className={style.arrow} style={{order: order}}><div></div></div>
       })()}
 
-      {(function evolve() {
-        if (position.position !== 0) {
-          return evolDetails(pokemonData.evolution_details);
-        }
-      })()}
 
-      <div className={style.pokemonContainer} style={{order: "3"}}>
+      <div className={style.pokemonContainer} style={{order: "2"}}>
+        {(function evolve() {
+          if (position.position !== 0) {
+            return evolDetails(pokemonData.evolution_details);
+          }
+        })()}
         <Link href={`/pokedex/pokemon/${pokemonIdToString(pokemon.id)}`}>
           <a><img src={pokemon.imgUrl} alt={`${pokemon.name}_evol`}/></a>
         </Link>
@@ -61,7 +60,7 @@ function evolDetails(details) {
     }
   }
   return (
-    <div className={style.evolveDetails}  style={{order: "2"}}>
+    <div className={style.evolveDetails}>
       <div className={style.key}>{cleanUnderscore(evolKey)}:</div>
       <div>{evolValue}</div>
     </div>

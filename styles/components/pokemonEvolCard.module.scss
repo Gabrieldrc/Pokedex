@@ -3,6 +3,7 @@
 $widthBig: 50%;
 $widthMedium: 35%;
 $widthSmall: 30%;
+$arrowBase: 50px;
 
 %container {
   display: flex;
@@ -26,7 +27,7 @@ $widthSmall: 30%;
   width: $widthSmall;
 }
 .arrow {
-  height: 50px;
+  height: $arrowBase;
   width: 100%;
   font-size: variables.$fontXLarge;
   & > div {
@@ -44,6 +45,9 @@ $widthSmall: 30%;
   flex-direction: column;
   height: fit-content;
   width: 100%;
+  & a {
+    order: 2;
+  }
   & img {
     border-radius: variables.$borderRadius;
     background-color: white;
@@ -52,6 +56,7 @@ $widthSmall: 30%;
     margin: auto;
   }
   & > h2 {
+    order: 3;
     color: variables.$darkGray;
     font-size: variables.$fontSmall;
     width: fit-content;
@@ -65,6 +70,7 @@ $widthSmall: 30%;
 }
 
 .evolveDetails {
+  order: 1;
   display: flex;
   height: 3rem;
   justify-content: flex-end;
@@ -72,8 +78,44 @@ $widthSmall: 30%;
   flex-direction: column;
   font-weight: 500;
   font-size: variables.$fontSmall * 0.8;
-  // background-color: red;
   & > .key {
     color: variables.$secundaryColor;
+  }
+}
+
+@media only screen and (min-width: (variables.$pDContainer *2)) {
+  $widthBig: 30%;
+  $widthMedium: 25%;
+  $widthSmall: 15%;
+  %container {
+    position: relative;
+    flex-direction: row;
+    max-width: $widthBig;
+    min-width: $widthSmall;
+    height: fit-content;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  .bigContainer {
+    @extend %container;
+    width: $widthBig;
+  }
+  .mediumContainer {
+    @extend %container;
+    width: $widthMedium;
+  }
+  .smallContainer {
+    @extend %container;
+    width: $widthSmall;
+  }
+  .arrow {
+    position: absolute;
+    bottom: 2rem;
+    right: -($arrowBase * 2);
+    width: $arrowBase;
+    margin: auto 1rem;
+    & > div {
+      transform: rotate(-45deg);
+    }
   }
 }

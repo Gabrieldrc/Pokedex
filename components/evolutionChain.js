@@ -36,9 +36,9 @@ export default function EvolutionChain({ order }) {
   return (
     <DetailsLayout evolDetails={true}>
       <h1>Evolutions: <span className={style.span}>{typeof pokeComponent[1] === "undefined"? "This Pokémon does not evolve.": ""}</span></h1>
-      <div className={style.faseContainerBase}>{pokeComponent[0]}</div>
-      {typeof pokeComponent[1] !== "undefined"? <div className={style.faseContainer}>{pokeComponent[1]}</div>: ""}
-      {typeof pokeComponent[2] !== "undefined"? <div className={style.faseContainer}>{pokeComponent[2]}</div>: ""}
+      <div className={style.fase0}>{pokeComponent[0]}</div>
+      {typeof pokeComponent[1] !== "undefined"? <div className={style.fase1}>{pokeComponent[1]}</div>: ""}
+      {typeof pokeComponent[2] !== "undefined"? <div className={style.fase2}>{pokeComponent[2]}</div>: ""}
     </DetailsLayout>
   );
 }
