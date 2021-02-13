@@ -3,42 +3,48 @@ import DetailsLayout from './layouts/detailsLayout';
 import PokemonEvolCard from './pokemonEvolCard';
 
 export default function EvolutionChain({ order }) {
-  let pokeComponent = [];
-  (function goThroughList(list, position, size = "big") {
-    list.forEach(pokemon => {
-      if (pokemon.name) {
-        if (typeof pokeComponent[position] === "undefined") {
-          pokeComponent.push([]);
-        }
-        pokeComponent[position].push(
-            <PokemonEvolCard 
-              pokemonData = {pokemon}
-              position = {{
-                position: position,
-                arrow: (position === 0 && list.length > 1),
-              }}
-              size = {size}
-              key = {`${pokemon.name}_${position}`}
-            />
-          );
-      } else {
-        let newSize;
-        if ( pokemon.filter(element => element.name).length >= 2) {
-          newSize = "medium";
-        } else {
-          newSize = "big";
-        }
-        goThroughList(pokemon, position + 1, newSize);
-      }
-    });
-  })(order, 0);
-    
   return (
     <DetailsLayout evolDetails={true}>
-      <h1>Evolutions: <span className={style.span}>{typeof pokeComponent[1] === "undefined"? "This Pokémon does not evolve.": ""}</span></h1>
-      <div className={style.fase0}>{pokeComponent[0]}</div>
-      {typeof pokeComponent[1] !== "undefined"? <div className={style.fase1}>{pokeComponent[1]}</div>: ""}
-      {typeof pokeComponent[2] !== "undefined"? <div className={style.fase2}>{pokeComponent[2]}</div>: ""}
+      <h1>Evolutions: <span className={style.span}>This Pokémon does not evolve.</span></h1>
+      <div className={style.layer1}>
+        <PokemonEvolCard 
+            pokemonData = {order[0]}
+            size = "big"
+            isBase = {true}
+            key = {`${order[0].name}_pokeEvolCard`}
+          />
+        {
+          order.length > 1? nextEvolution(order[1]): ""
+        }
+      </div>
     </DetailsLayout>
-  );
+    );
+}
+
+function nextEvolution(data, time = 1) {
+  const pokemon2 = data.filter(element => element.name !== undefined)
+  const evolution2 = data.filter(element => element.name === undefined)
+  const size = pokemon2.length === 1? "big": "medium";
+  const lastLayer = time === 1 && pokemon2.length !== 1? "layer4" : "lastLayer";
+  console.log(evolution2);
+  return (
+    <div className={style[`layer2`]}>
+      <div className={style.arrow}><div></div></div>
+      <div className={style[`layer3${pokemon2.length === 1? "Single" : (pokemon2.length === 2? "Double" : "Multiple")}`]}>
+        {pokemon2.map((pokemon, index) => {
+          return (
+            <div className={style[`${lastLayer}`]}>
+              <PokemonEvolCard 
+                  pokemonData={pokemon}
+                  size={size}
+                  key = {`${pokemon.name}_pokeEvolCard`}
+                />
+                {evolution2[index] !== undefined? nextEvolution(evolution2[index], time + 1) : ""}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );  
+  
 }

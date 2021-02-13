@@ -1,9 +1,8 @@
 @use '../1-helpers/variables';
 
-$widthBig: 50%;
-$widthMedium: 35%;
+$widthBig: 80%;
+$widthMedium: 70%;
 $widthSmall: 30%;
-$arrowBase: 50px;
 
 %container {
   display: flex;
@@ -12,9 +11,8 @@ $arrowBase: 50px;
   min-width: $widthSmall;
   height: fit-content;
   margin: 0 auto;
-  margin-bottom: 1rem;
 }
-.bigContainer {
+.bigContainer, .bigContainerBase {
   @extend %container;
   width: $widthBig;
 }
@@ -22,24 +20,6 @@ $arrowBase: 50px;
   @extend %container;
   width: $widthMedium;
 }
-.smallContainer {
-  @extend %container;
-  width: $widthSmall;
-}
-.arrow {
-  height: $arrowBase;
-  width: 100%;
-  font-size: variables.$fontXLarge;
-  & > div {
-    transform: rotate(45deg);
-    width: 40px;
-    height: 40px;
-    border-bottom: 10px solid white;
-    border-right: 10px solid variables.$detailsColor;
-    margin: auto;
-  }
-}
-
 .pokemonContainer {
   display: flex;
   flex-direction: column;
@@ -68,7 +48,6 @@ $arrowBase: 50px;
     }
   }
 }
-
 .evolveDetails {
   order: 1;
   display: flex;
@@ -84,38 +63,32 @@ $arrowBase: 50px;
 }
 
 @media only screen and (min-width: (variables.$pDContainer *2)) {
-  $widthBig: 30%;
-  $widthMedium: 25%;
-  $widthSmall: 15%;
   %container {
-    position: relative;
-    flex-direction: row;
-    max-width: $widthBig;
-    min-width: $widthSmall;
-    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    max-width: initial;
+    min-width: initial;
+    height: unset;
     margin: 0 auto;
-    margin-bottom: 1rem;
+  }
+  .bigContainerBase {
+    width: 30%;
   }
   .bigContainer {
-    @extend %container;
-    width: $widthBig;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
   }
-  .mediumContainer {
-    @extend %container;
-    width: $widthMedium;
+  .evolveDetails {
+    height: 7%;
   }
-  .smallContainer {
-    @extend %container;
-    width: $widthSmall;
-  }
-  .arrow {
-    position: absolute;
-    bottom: 2rem;
-    right: -($arrowBase * 2);
-    width: $arrowBase;
-    margin: auto 1rem;
-    & > div {
-      transform: rotate(-45deg);
-    }
+}
+
+@media only screen and (min-width: 1000px) {
+  .evolveDetails {
+    height: 5%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
   }
 }

@@ -1,37 +1,110 @@
 @use '../1-helpers/variables';
 
-$marginTop: 2rem;
+$arrowBase: 50px;
+%layers {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
 .span {
   color: white;
   font-size: variables.$fontSmall;
   font-weight: 400;
 }
-.fase0 {
-  display: flex;
-  margin-top: $marginTop;
+.arrow {
+  font-size: variables.$fontXLarge;
+  width: fit-content;
+  height: fit-content;
+  margin: 1rem auto;
+  & > div {
+    height: $arrowBase;
+    width: 100%;
+    transform: rotate(45deg);
+    width: $arrowBase;
+    border-bottom: 10px solid white;
+    border-right: 10px solid variables.$detailsColor;
+  }
 }
-.fase1 {
-  display: flex;
+.layer1 {
+  @extend %layers;
+  margin-top: 2rem;
+  width: fit-content;
+}
+.layer3Single, .layer3Double {
+  @extend %layers;
+  flex-direction: row;
+  justify-content: center;
+}
+.layer3Multiple {
+  @extend %layers;
+  flex-direction: unset;
   flex-wrap: wrap;
 }
-.fase2 {
-  display: flex;
+.layer2 {
+  @extend %layers;
+}
+.layer4 {
+  width: 50%;
+  @extend %layers;
+}
+.lastLayer {
+  @extend %layers;
 }
 
+
 @media only screen and (min-width: (variables.$pDContainer *2)) {
-  $details: 3rem;
-  .fase0 {
-    margin-top: $marginTop + $details;  
+  %layers {
+    flex-direction: row;
+    width: fit-content;
+    height: 100%;
+    max-height: 100%;
   }
-  %fase12 {
-    margin-top: $marginTop;
+  .arrow {
+    height: fit-content;
+    margin: auto 1rem;
+    align-self: center;
+    & > div {
+      transform: rotate(-45deg);
+    }
   }
-  .fase1 {
-    @extend %fase12;
+  .layer1 {
+    @extend %layers;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem
   }
-  .fase2 {
-    @extend %fase12;
+  .layer2 {
+    @extend %layers;
+    // background-color: purple;
+  }
+  .layer3Double {
+    @extend %layers;
+    // background-color: yellow;
     flex-direction: column;
+    justify-content: center;
   }
+  .layer3Single {
+    @extend %layers;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  .layer3Multiple {
+    background-color: yellow;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2%;
+    height: fit-content;
+    max-height: 100%;
+    margin-top: 0;
+  }
+  
+  // .layer4 {
+  //   width: 50%;
+  //   @extend %layers;
+  // }
+  // .lastLayer {
+  //   @extend %layers;
+  // }
 }

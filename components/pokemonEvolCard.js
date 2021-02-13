@@ -3,7 +3,7 @@ import style from '../styles/components/pokemonEvolCard.module.scss';
 import { capitalize, pokemonIdToString, cleanUnderscore } from '../lib/functions';
 import Link from 'next/link';
 
-export default function pokemonEvolCard({ pokemonData, position, size }) {
+export default function pokemonEvolCard({ pokemonData, size = "big", isBase = false }) {
   const { data, isLoading, isError } = basicPokemonDataCS(pokemonData.name);
   if (isLoading) {
     return(<div>cargandisimo</div>);
@@ -13,24 +13,10 @@ export default function pokemonEvolCard({ pokemonData, position, size }) {
   }
   const pokemon = basicPokemonDataFilter(data.data);
   return(
-    <div className={style[`${size}Container`]}>
-      {(function arrow() {
-        let order;
-        if (position.position === 1 || (position.position === 0 && !position.arrow)) {
-          return;
-        }
-        if (position.position === 0 && position.arrow) {
-          order = 3;
-        } else {
-          order = 1;
-        }
-        return <div className={style.arrow} style={{order: order}}><div></div></div>
-      })()}
-
-
-      <div className={style.pokemonContainer} style={{order: "2"}}>
+    <div className={style[`${size}Container${isBase? "Base" : ""}`]}>
+      <div className={style.pokemonContainer} >
         {(function evolve() {
-          if (position.position !== 0) {
+          if (!isBase) {
             return evolDetails(pokemonData.evolution_details);
           }
         })()}
