@@ -1,11 +1,6 @@
 @use '../1-helpers/variables';
 
 $arrowBase: 50px;
-%layers {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
 
 .span {
   color: white;
@@ -26,40 +21,26 @@ $arrowBase: 50px;
     border-right: 10px solid variables.$detailsColor;
   }
 }
-.layer1 {
-  @extend %layers;
-  margin-top: 2rem;
+.faseBase {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 3rem;
   width: fit-content;
 }
-.layer3Single, .layer3Double {
-  @extend %layers;
-  flex-direction: row;
-  justify-content: center;
+.faseSingle {
+  @extend .faseBase;
 }
-.layer3Multiple {
-  @extend %layers;
-  flex-direction: unset;
-  flex-wrap: wrap;
+.faseDouble {
+  display: grid;
+  grid-template-columns: auto auto;
 }
-.layer2 {
-  @extend %layers;
+.faseMultiple {
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
-.layer4 {
-  width: 50%;
-  @extend %layers;
-}
-.lastLayer {
-  @extend %layers;
-}
-
 
 @media only screen and (min-width: (variables.$pDContainer *2)) {
-  %layers {
-    flex-direction: row;
-    width: fit-content;
-    height: 100%;
-    max-height: 100%;
-  }
   .arrow {
     height: fit-content;
     margin: auto 1rem;
@@ -68,43 +49,12 @@ $arrowBase: 50px;
       transform: rotate(-45deg);
     }
   }
-  .layer1 {
-    @extend %layers;
-    align-items: center;
-    justify-content: center;
-    margin-top: 6rem
+  .faseBase, .faseDouble, .faseMultiple, .faseSingle {
+    margin-top: 3rem;
   }
-  .layer2 {
-    @extend %layers;
-    // background-color: purple;
-  }
-  .layer3Double {
-    @extend %layers;
-    // background-color: yellow;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .layer3Single {
-    @extend %layers;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-  }
-  .layer3Multiple {
-    background-color: yellow;
+  .faseDouble {
     display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 2%;
-    height: fit-content;
-    max-height: 100%;
-    margin-top: 0;
+    grid-template-columns: unset;
+    grid-template-rows: auto auto;
   }
-  
-  // .layer4 {
-  //   width: 50%;
-  //   @extend %layers;
-  // }
-  // .lastLayer {
-  //   @extend %layers;
-  // }
 }
