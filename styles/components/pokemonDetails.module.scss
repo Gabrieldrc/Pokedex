@@ -43,6 +43,8 @@ $maxWVerticalC: variables.$maxWVerticalC;
     border-radius: inherit;
     background-color: rgb(148,235,190, 0.5);
     border: 2px solid variables.$secundaryColor;
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 .number {
@@ -148,6 +150,9 @@ $maxWVerticalC: variables.$maxWVerticalC;
     width: $baseT + 2;
     height: $baseT + 2;
     font-size: variables.$fontNormal;
+    // background-color: red;
+    max-width: 50px;
+    max-height: 50px;
     .innerCircle {
       width: $baseT;
       height: $baseT;
