@@ -1,4 +1,5 @@
 @use '../1-helpers/variables';
+@use '../1-tools/functions';
 
 $fontWeight: 900;
 $padding: 10px;
@@ -26,6 +27,7 @@ $padding: 10px;
   justify-content: space-between;
   padding: ($padding / 2) $padding;
   .infoButtom {
+    cursor: pointer;
     width: variables.$fontNormal;
     height: variables.$fontNormal;
     display: flex;
@@ -62,9 +64,10 @@ $padding: 10px;
     }
   }
   .closeButtom {
+    cursor: pointer;
     @extend .title3;
     background-color: black;
-    border-end-start-radius: variables.$borderRadius;
+    @include functions.prefix(border-bottom-left-radius, variables.$borderRadius, webkit);
   }
   & > .title2, p {
     margin: 5px 20px;
