@@ -40,7 +40,6 @@ function nextEvolution(data) {
   const classExt = pokemonList.length === 1? "Single" : (
     pokemonList.length === 2? "Double" : "Multiple"
     );
-    console.log(evolutionList)
   return (
     <>
       <div className={style.arrow}><div></div></div>
