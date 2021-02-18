@@ -1,16 +1,64 @@
 @use '../1-helpers/variables';
 
-// variables.$
+$arrowBase: 50px;
 
 .span {
   color: white;
   font-size: variables.$fontSmall;
   font-weight: 400;
 }
-.faseContainer {
-  display: flex;
-  flex-wrap: wrap;
+.arrow {
+  font-size: variables.$fontXLarge;
+  width: fit-content;
+  height: fit-content;
+  margin: 1rem auto;
+  & > div {
+    height: $arrowBase;
+    width: 100%;
+    transform: rotate(45deg);
+    width: $arrowBase;
+    border-bottom: 10px solid white;
+    border-right: 10px solid variables.$detailsColor;
+  }
 }
-.faseContainerBase {
-  margin-top: 2rem;
+.faseBase {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 3rem;
+  width: fit-content;
+}
+.faseSingle {
+  @extend .faseBase;
+  margin-top: unset;
+}
+.faseDouble {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.faseMultiple {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+@media only screen and (min-width: (variables.$pDContainer *2)) {
+  .arrow {
+    height: fit-content;
+    margin: auto 1rem;
+    align-self: center;
+    & > div {
+      transform: rotate(-45deg);
+    }
+  }
+  .faseSingle {
+    margin-bottom: 0;
+  }
+  .faseDouble {
+    display: grid;
+    grid-template-columns: unset;
+    grid-template-rows: auto auto;
+  }
+  .faseMultiple {
+    grid-template-columns: auto auto auto;
+  }
 }

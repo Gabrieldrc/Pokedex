@@ -1,7 +1,7 @@
 @use '../1-helpers/variables';
 
-$widthBig: 50%;
-$widthMedium: 35%;
+$widthBig: 80%;
+$widthMedium: 70%;
 $widthSmall: 30%;
 
 %container {
@@ -11,9 +11,8 @@ $widthSmall: 30%;
   min-width: $widthSmall;
   height: fit-content;
   margin: 0 auto;
-  margin-bottom: 1rem;
 }
-.bigContainer {
+.bigContainer, .bigContainerBase {
   @extend %container;
   width: $widthBig;
 }
@@ -21,29 +20,14 @@ $widthSmall: 30%;
   @extend %container;
   width: $widthMedium;
 }
-.smallContainer {
-  @extend %container;
-  width: $widthSmall;
-}
-.arrow {
-  height: 50px;
-  width: 100%;
-  font-size: variables.$fontXLarge;
-  & > div {
-    transform: rotate(45deg);
-    width: 40px;
-    height: 40px;
-    border-bottom: 10px solid white;
-    border-right: 10px solid variables.$detailsColor;
-    margin: auto;
-  }
-}
-
 .pokemonContainer {
   display: flex;
   flex-direction: column;
   height: fit-content;
   width: 100%;
+  & a {
+    order: 2;
+  }
   & img {
     border-radius: variables.$borderRadius;
     background-color: white;
@@ -52,6 +36,7 @@ $widthSmall: 30%;
     margin: auto;
   }
   & > h2 {
+    order: 3;
     color: variables.$darkGray;
     font-size: variables.$fontSmall;
     width: fit-content;
@@ -63,8 +48,8 @@ $widthSmall: 30%;
     }
   }
 }
-
 .evolveDetails {
+  order: 1;
   display: flex;
   height: 3rem;
   justify-content: flex-end;
@@ -72,7 +57,6 @@ $widthSmall: 30%;
   flex-direction: column;
   font-weight: 500;
   font-size: variables.$fontSmall * 0.8;
-  // background-color: red;
   & > .key {
     color: variables.$secundaryColor;
   }

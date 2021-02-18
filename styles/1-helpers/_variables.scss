@@ -28,6 +28,9 @@ $darkGray: rgb(36, 35, 34);
 $black: rgb(0, 0, 0);
 $transparent: rgba(0, 0, 0, 0);
 
+$linearGradientGreen: linear-gradient(to right, $primaryColorLight, $primaryColorDark);
+$radialGradientGreen: radial-gradient(circle, $primaryColorDark, $transparent 50%);
+$linearGradientBlue: linear-gradient(to left top, rgb(0, 217, 255), rgb(63, 134, 248));
   // Pokemon Type Background 
 $fireBackground: #2c0000 #430a0a;
 $waterBackground: #0053ee #0091d4;
@@ -60,3 +63,16 @@ $type_grass: rgb(155, 204, 80);
 $borderRadius: 5px;
 $circleBorder: 9999px;
 $boxShadowCard: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+$minVWTablet: 426px;
+$minVWDesktop: 769px;
+$maxWVerticalC: 1000px;
+
+// 'gp' stands for: grid Pokemon
+// 'D' stands for: Desktop
+$gpBase: 205px;
+$gpGap: 5px;
+$gpGapD: 10px;
+
+//PokemonDetails container
+$pDContainer: 375px;

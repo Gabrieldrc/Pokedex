@@ -1,8 +1,8 @@
 @use '../1-helpers/variables';
 
-%images {
+@mixin imageSize($percentage) {
   width: 100%;
-  height: 30vw; 
+  height: $percentage; 
 }
 
 %absolute {
@@ -16,7 +16,7 @@
   position: relative;
   border-radius: variables.$borderRadius;
   border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.10);
+  background-image: variables.$radialGradientGreen;
   padding: 5vw 1vw 1vw 1vw;
   &:active {
     background-color: rgba(255, 255, 255, 0.3);
@@ -28,16 +28,16 @@
 }
 .pokemon_image {
   @extend %absolute;
-  @extend %images;
+  @include imageSize(85%);
   z-index: 3;
   bottom: 0;
   &:active {
-    padding: 20px;
+    padding: 5px;
   }
 }
 
 .background_image {
-  @extend %images;
+  @include imageSize(100%);
   background-image: url('/images/pokeball_white_bg.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -52,9 +52,34 @@
   background-color: variables.$detailsColor;
   color: white;
   width: fit-content;
-  padding: 1vh 2vw;
-  font-size: variables.$fontSmall;
-  border-top-left-radius: variables.$borderRadius;
-  border-bottom-right-radius: 25px;
+  padding: 1vw;
+  font-size: variables.$fontNormal;
+  border-radius: variables.$borderRadius;
   z-index: 2;
+}
+
+$minVWTablet: variables.$minVWTablet;
+$minVWDesktop: variables.$minVWDesktop;
+@media only screen and (min-width: $minVWTablet) {
+  .container {
+    width: auto;
+    height: (100vw / 4.5);  
+    padding: 3vh 1vw 1vw;
+  }
+}
+
+$maxWVerticalC: variables.$maxWVerticalC;
+@media only screen and (min-width: $minVWDesktop) {
+  .container {
+    width: 100%/4;
+    max-width: variables.$gpBase;
+    max-height: $maxWVerticalC/4;  
+    padding: 3vh 1vw 1vw;
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .number {
+    padding: 1vh;
+  }
 }

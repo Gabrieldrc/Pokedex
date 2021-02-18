@@ -18,23 +18,10 @@ export default function Pokedex() {
         <a href="#Pokedex">Pokédex</a>
         <div href="#Move">Move</div>
       </div> */}
-      <div className={style.horizontal_container}>
-        <div className={style.carousel}>
-          <div className={style.slider}>
-            <section id="Pokedex" >
-              <div className={style.vertical_container}>
-                {renderAllGridPokemon()}
-              </div>
-            </section>
-            <section id="Move" style={{backgroundColor: "tomato"}}>
-              pagina3
-            </section>
-            <section id="Ability" style={{backgroundColor: "blue"}}>
-              pagina1
-            </section>
-          </div>
-        </div>
+      <div className={style.vertical_container}>
+        {renderAllGridPokemon()}
       </div>
+      
     </Layout>
   )
 }

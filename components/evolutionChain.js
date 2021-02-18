@@ -3,42 +3,65 @@ import DetailsLayout from './layouts/detailsLayout';
 import PokemonEvolCard from './pokemonEvolCard';
 
 export default function EvolutionChain({ order }) {
-  let pokeComponent = [];
-  (function goThroughList(list, position, size = "big") {
-    list.forEach(pokemon => {
-      if (pokemon.name) {
-        if (typeof pokeComponent[position] === "undefined") {
-          pokeComponent.push([]);
-        }
-        pokeComponent[position].push(
-            <PokemonEvolCard 
-              pokemonData = {pokemon}
-              position = {{
-                position: position,
-                arrow: (position === 0 && list.length > 1),
-              }}
-              size = {size}
-              key = {`${pokemon.name}_${position}`}
-            />
-          );
-      } else {
-        let newSize;
-        if ( pokemon.filter(element => element.name).length >= 2) {
-          newSize = "medium";
-        } else {
-          newSize = "big";
-        }
-        goThroughList(pokemon, position + 1, newSize);
-      }
-    });
-  })(order, 0);
-    
+  const evolveSpan = order.length === 1? <span className={style.span}>This Pokémon does not evolve.</span> : "";
   return (
     <DetailsLayout evolDetails={true}>
-      <h1>Evolutions: <span className={style.span}>{typeof pokeComponent[1] === "undefined"? "This Pokémon does not evolve.": ""}</span></h1>
-      <div className={style.faseContainerBase}>{pokeComponent[0]}</div>
-      {typeof pokeComponent[1] !== "undefined"? <div className={style.faseContainer}>{pokeComponent[1]}</div>: ""}
-      {typeof pokeComponent[2] !== "undefined"? <div className={style.faseContainer}>{pokeComponent[2]}</div>: ""}
+      <h1>Evolutions: {evolveSpan}</h1>
+      <div className={style.faseBase}>
+        <PokemonEvolCard 
+            pokemonData = {order[0]}
+            size = "big"
+            isBase = {true}
+            key = {`${order[0].name}_pokeEvolCard`}
+          />
+      </div>
+        {
+          order.length > 1? nextEvolution(order[1]): ""
+        }
     </DetailsLayout>
-  );
+    );
+}
+
+function nextEvolution(data) {
+  const pokemonList = data.filter(element => element.name !== undefined)
+  const arrayList = data.filter(element => element.name === undefined)
+  let evolutionList = [];
+  function buildEvolutionList(list) {
+    list.forEach(element => {
+      if (element.name !== undefined) {
+        evolutionList.push(element)
+      } else {
+        buildEvolutionList(element);
+      }
+      
+    });
+  }
+  buildEvolutionList(arrayList);
+  const classExt = pokemonList.length === 1? "Single" : (
+    pokemonList.length === 2? "Double" : "Multiple"
+    );
+  return (
+    <>
+      <div className={style.arrow}><div></div></div>
+      <div className={style[`fase${classExt}`]}>
+        {
+          pokemonList.map((pokemon, index) => {
+            return (
+              <PokemonEvolCard 
+                pokemonData = {pokemon}
+                size = "big"
+                order= {index}
+                key = {`${pokemon.name}_pokeEvolCard`}
+                />
+            )
+          })
+        }
+      </div>
+
+        {
+          evolutionList.length > 0? nextEvolution(evolutionList): ""
+        }
+    </>
+    );
+ 
 }
