@@ -1,0 +1,92 @@
+@use '../1-helpers/variables';
+
+$gpBase: variables.$gpBase;
+$gpGapD: variables.$gpGapD;
+.container {
+  position: fixed;
+  z-index: variables.$zIndexFront;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // background-color: red;
+  & > .bar {
+    margin: 0 auto;
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 1%;
+    // background-color: rgb(255, 0, 0);
+    background-image: linear-gradient(-100deg, variables.$secundaryColor , variables.$primaryColorLight );
+    border-bottom: 2px solid variables.$secundaryColor;
+    box-shadow: variables.$boxShadowCard;
+    max-width: ($gpBase*4) + ($gpGapD * 3) + 10 + ($gpGapD * 4);
+    & > input[type=submit] {
+      cursor: pointer;
+      color: black;
+      width: 8%;
+      height: 80%;
+      margin: auto;
+    }
+  }
+}
+
+.input[type=text] {
+  width: 90%;
+  height: 80%;
+  border-radius: none;
+  border: none;
+  font-size: variables.$fontLarge;
+  color: variables.$detailsColor;
+  background-color: rgba(0, 0, 0, 0);
+  padding-left: 10px;
+  &:focus {
+    background-color: white;
+    color: black;
+  }
+}
+.menuContainer {
+  background-color: variables.$darkGray;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: variables.$fontLarge;
+  & > .exitMenu {
+    position: absolute;
+    bottom: 2vh;
+    color: white;
+  }
+  & > .menu {
+    display: grid;
+    
+  }
+}
+
+$minVWTablet: variables.$minVWTablet;
+$minVWDesktop: variables.$minVWDesktop;
+$maxWVerticalC: variables.$maxWVerticalC;
+@media only screen and (min-width: $minVWTablet) {
+  .container {
+    & > .bar {
+      max-width: ($minVWTablet + (($minVWDesktop - $minVWTablet)/2));
+    }
+  }
+}
+
+$gpBase: variables.$gpBase;
+$gpGap: variables.$gpGap;
+$gpGapD: variables.$gpGapD;
+@media only screen and (min-width: $minVWDesktop) {
+  .container {
+    & > .bar {
+      max-width: ($gpBase*4) + ($gpGapD * 3) + 10 + ($gpGapD * 4);
+    }
+  }
+}
