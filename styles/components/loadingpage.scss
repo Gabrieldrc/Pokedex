@@ -1,10 +1,11 @@
+@use '../1-helpers/variables';
 
 //loading component
 #loading_page_animation {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 9999999;
+  z-index: variables.$zIndexFront;
   color: white;
 
   /* loading icon */
