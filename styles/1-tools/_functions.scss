@@ -7,3 +7,10 @@
 @mixin toBottomBG($colorList) {
   background-image: linear-gradient(to bottom, list.nth($colorList, 1), list.nth($colorList, 2));
 }
+
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
