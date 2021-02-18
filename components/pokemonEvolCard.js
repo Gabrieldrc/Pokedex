@@ -16,7 +16,7 @@ export default function pokemonEvolCard({ pokemonData, size = "big", isBase = fa
     <div className={style[`${size}Container${isBase? "Base" : ""}`]} style={{order: `${order}`}}>
       <div className={style.pokemonContainer} >
         {(function evolve() {
-          if (!isBase) {
+            if (!isBase) {
             return evolDetails(pokemonData.evolution_details);
           }
         })()}

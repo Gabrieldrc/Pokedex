@@ -24,11 +24,23 @@ export default function EvolutionChain({ order }) {
 
 function nextEvolution(data) {
   const pokemonList = data.filter(element => element.name !== undefined)
-  const evolutionList = data.filter(element => element.name === undefined)
-    .map(element => element[0])
+  const arrayList = data.filter(element => element.name === undefined)
+  let evolutionList = [];
+  function buildEvolutionList(list) {
+    list.forEach(element => {
+      if (element.name !== undefined) {
+        evolutionList.push(element)
+      } else {
+        buildEvolutionList(element);
+      }
+      
+    });
+  }
+  buildEvolutionList(arrayList);
   const classExt = pokemonList.length === 1? "Single" : (
     pokemonList.length === 2? "Double" : "Multiple"
     );
+    console.log(evolutionList)
   return (
     <>
       <div className={style.arrow}><div></div></div>
@@ -39,7 +51,6 @@ function nextEvolution(data) {
               <PokemonEvolCard 
                 pokemonData = {pokemon}
                 size = "big"
-                isBase = {true}
                 order= {index}
                 key = {`${pokemon.name}_pokeEvolCard`}
                 />

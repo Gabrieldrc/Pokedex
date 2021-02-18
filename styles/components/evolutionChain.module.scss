@@ -30,6 +30,7 @@ $arrowBase: 50px;
 }
 .faseSingle {
   @extend .faseBase;
+  margin-top: unset;
 }
 .faseDouble {
   display: grid;
@@ -37,7 +38,7 @@ $arrowBase: 50px;
 }
 .faseMultiple {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
 }
 
 @media only screen and (min-width: (variables.$pDContainer *2)) {
@@ -49,12 +50,15 @@ $arrowBase: 50px;
       transform: rotate(-45deg);
     }
   }
-  .faseBase, .faseDouble, .faseMultiple, .faseSingle {
-    margin-top: 3rem;
+  .faseSingle {
+    margin-bottom: 0;
   }
   .faseDouble {
     display: grid;
     grid-template-columns: unset;
     grid-template-rows: auto auto;
+  }
+  .faseMultiple {
+    grid-template-columns: auto auto auto;
   }
 }
