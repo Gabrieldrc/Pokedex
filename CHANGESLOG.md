@@ -3,9 +3,9 @@
 
 ## [Unreleased]
 
-<!-- ## [v1.13.8] - 2021-02-09
-### Added
-- Se agregó ... -->
+## [v1.0.1] - 2021-02-17
+### Fixed
+- Se realizó el diseño responsive
 
 [Unreleased]: https://github.com/Gabrieldrc/Pokedex/compare/main...HEAD
-<!-- [v1.13.8]: https://github.com/Gabrieldrc/Pokedex/compare/main...HEAD -->
+[v1.0.1]: https://github.com/Gabrieldrc/Pokedex/compare/main...v1.0.1
